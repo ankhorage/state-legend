@@ -5,6 +5,65 @@
 
 ![license: MIT](././paradox/badges/license.svg) ![npm: v0.0.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
 
+Legend State adapter for the provider-neutral `StateAdapter` contracts from
+`@ankhorage/contracts`.
+
+The package keeps Legend State behind the adapter boundary:
+
+```txt
+Legend State
+  -> @ankhorage/state-legend
+  -> StateAdapter
+  -> runtime binding resolver
+  -> plain props
+  -> ZORA components
+```
+
+ZORA, runtime, Studio, Supabase, React Native, and Expo are intentionally not
+imported by this package.
+
+## Install
+
+```bash
+bun add @ankhorage/state-legend @ankhorage/contracts @legendapp/state@beta
+```
+
+## Usage
+
+```ts
+import { createLegendStateAdapter } from '@ankhorage/state-legend';
+
+const stateAdapter = createLegendStateAdapter({
+  initialState: {
+    session: {
+      user: null,
+    },
+  },
+});
+
+stateAdapter.set('forms.contact.values.firstname', 'Fabio');
+const result = stateAdapter.get('forms.contact.values.firstname');
+
+if (result.ok) {
+  console.log(result.data);
+}
+```
+
+## API
+
+```ts
+createLegendStateAdapter(options?: LegendStateAdapterOptions): StateAdapter
+```
+
+Features:
+
+- path-based `get`
+- path-based `set`
+- path-based `subscribe`
+- optional path-based `delete`
+- deterministic unsubscribe
+- no React dependency in the core adapter
+
 ## Generated documentation
 
 - [Interactive documentation app](././paradox/index.html)
