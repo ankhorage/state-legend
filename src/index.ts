@@ -31,8 +31,17 @@ type StateListenerSet = Set<(value: StateValue | undefined) => void>;
 export function createLegendStateAdapter(
   options: LegendStateAdapterOptions = {},
 ): StateAdapter {
-  const root$ = observable<StateRecord>({ ...(options.initialState ?? {}) });
+  const root$ = observable<{ state: unknown }>({ state: { ...(options.initialState ?? {}) } });
   const listeners = new Map<string, StateListenerSet>();
+
+  const readRootState = (): StateRecord => {
+    const currentState = root$.state.get();
+    return isPlainStateRecord(currentState) ? currentState : {};
+  };
+
+  const writeRootState = (nextState: StateRecord) => {
+    root$.state.set(nextState);
+  };
 
   const emit = (path: StatePath, value: StateValue | undefined) => {
     const keyResult = normalizePath(path);
@@ -52,34 +61,38 @@ export function createLegendStateAdapter(
       computed: false,
       persistence: false,
     },
-    get(path) {
+    get<TValue extends StateValue = StateValue>(path: StatePath): StateResult<TValue | undefined> {
       const pathResult = normalizePath(path);
       if (!pathResult.ok) return pathResult;
 
+      const value = readPath(readRootState(), pathResult.parts);
       return {
         ok: true,
-        data: readPath(root$.get(), pathResult.parts),
+        data: value as TValue | undefined,
       };
     },
-    set(path, value) {
+    set<TValue extends StateValue = StateValue>(path: StatePath, value: TValue): StateResult {
       const pathResult = normalizePath(path);
       if (!pathResult.ok) return pathResult;
 
-      const nextStateResult = setPath(root$.get(), pathResult.parts, value);
+      const nextStateResult = setPath(readRootState(), pathResult.parts, value);
       if (!nextStateResult.ok) return nextStateResult;
 
-      root$.set(nextStateResult.data);
+      writeRootState(nextStateResult.data);
       emit(path, value);
       return { ok: true };
     },
-    subscribe(path, listener) {
+    subscribe<TValue extends StateValue = StateValue>(path: StatePath, listener: (snapshot: {
+      readonly path: StatePath;
+      readonly value: TValue | undefined;
+    }) => void): StateResult<StateSubscription> {
       const pathResult = normalizePath(path);
       if (!pathResult.ok) return pathResult;
 
       const key = pathPartsToKey(pathResult.parts);
       const listenersForPath = listeners.get(key) ?? new Set<(value: StateValue | undefined) => void>();
       const wrappedListener = (value: StateValue | undefined) => {
-        listener({ path, value });
+        listener({ path, value: value as TValue | undefined });
       };
 
       listenersForPath.add(wrappedListener);
@@ -99,14 +112,14 @@ export function createLegendStateAdapter(
         data: subscription,
       };
     },
-    delete(path) {
+    delete(path: StatePath): StateResult {
       const pathResult = normalizePath(path);
       if (!pathResult.ok) return pathResult;
 
-      const nextStateResult = deletePath(root$.get(), pathResult.parts);
+      const nextStateResult = deletePath(readRootState(), pathResult.parts);
       if (!nextStateResult.ok) return nextStateResult;
 
-      root$.set(nextStateResult.data);
+      writeRootState(nextStateResult.data);
       emit(path, undefined);
       return { ok: true };
     },
@@ -114,8 +127,8 @@ export function createLegendStateAdapter(
 }
 
 function normalizePath(path: StatePath): PathResolutionResult {
-  const parts = Array.isArray(path) ? path : path.split('.');
-  const normalized = parts.map((part) => part.trim()).filter(Boolean);
+  const parts = typeof path === 'string' ? path.split('.') : [...path];
+  const normalized = parts.map((part: string) => part.trim()).filter(Boolean);
 
   if (normalized.length === 0) {
     return createError('invalid_path', 'State path must contain at least one segment.');
@@ -193,7 +206,13 @@ function deletePath(source: StateRecord, parts: readonly string[]): StateResult<
   }
 
   if (tail.length === 0) {
-    const { [head]: _removed, ...nextState } = source;
+    const nextState: StateRecord = {};
+    for (const [key, entry] of Object.entries(source)) {
+      if (key !== head) {
+        nextState[key] = entry;
+      }
+    }
+
     return {
       ok: true,
       data: nextState,
