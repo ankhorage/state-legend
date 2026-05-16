@@ -1,6 +1,7 @@
 import type {
   StateAdapter,
   StateAdapterError,
+  StateListener,
   StatePath,
   StateResult,
   StateSubscription,
@@ -66,10 +67,7 @@ export function createLegendStateAdapter(
       if (!pathResult.ok) return pathResult;
 
       const value = readPath(readRootState(), pathResult.parts);
-      return {
-        ok: true,
-        data: value as TValue | undefined,
-      };
+      return createStateDataResult<TValue | undefined>(value as TValue | undefined);
     },
     set<TValue extends StateValue = StateValue>(path: StatePath, value: TValue): StateResult {
       const pathResult = normalizePath(path);
@@ -82,10 +80,10 @@ export function createLegendStateAdapter(
       emit(path, value);
       return { ok: true };
     },
-    subscribe<TValue extends StateValue = StateValue>(path: StatePath, listener: (snapshot: {
-      readonly path: StatePath;
-      readonly value: TValue | undefined;
-    }) => void): StateResult<StateSubscription> {
+    subscribe<TValue extends StateValue = StateValue>(
+      path: StatePath,
+      listener: StateListener<TValue>,
+    ): StateResult<StateSubscription> {
       const pathResult = normalizePath(path);
       if (!pathResult.ok) return pathResult;
 
@@ -252,4 +250,13 @@ function createError(code: string, message: string): { readonly ok: false; reado
     ok: false,
     error: { code, message },
   };
+}
+
+function createStateDataResult<TValue>(data: TValue): StateResult<TValue> {
+  const result = {
+    ok: true,
+    data,
+  };
+
+  return result as StateResult<TValue>;
 }
