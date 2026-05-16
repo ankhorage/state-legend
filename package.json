@@ -2,7 +2,7 @@
   "name": "@ankhorage/state-legend",
   "type": "module",
   "version": "0.0.0",
-  "description": "",
+  "description": "Legend State adapter for Ankhorage state contracts.",
   "homepage": "https://github.com/ankhorage/state-legend#readme",
   "bugs": {
     "url": "https://github.com/ankhorage/state-legend/issues"
@@ -15,8 +15,17 @@
     "type": "git",
     "url": "git+https://github.com/ankhorage/state-legend.git"
   },
-  "keywords": [],
-  "dependencies": {},
+  "keywords": [
+    "ankhorage",
+    "state",
+    "legend-state",
+    "adapter",
+    "typescript"
+  ],
+  "dependencies": {
+    "@ankhorage/contracts": "^1.8.0",
+    "@legendapp/state": "beta"
+  },
   "files": [
     "dist",
     "src",
