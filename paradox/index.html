@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ankhorage/state-legend • Paradox</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+        background: #f5f7fb;
+        color: #11203b;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      a {
+        color: #2459d3;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      button {
+        font: inherit;
+      }
+      code,
+      pre {
+        font-family: 'SFMono-Regular', ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(16rem, 22rem) minmax(0, 1fr);
+        min-height: 100vh;
+      }
+      .sidebar {
+        padding: 1.5rem;
+        border-right: 1px solid #d8dfec;
+        background: #ffffff;
+        position: sticky;
+        top: 0;
+        max-height: 100vh;
+        overflow: auto;
+      }
+      .content {
+        padding: 2rem;
+      }
+      .panel,
+      .item {
+        background: #ffffff;
+        border: 1px solid #d8dfec;
+        border-radius: 0.9rem;
+        padding: 1rem 1.2rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 8px 24px rgba(17, 32, 59, 0.06);
+      }
+      .summary {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+      }
+      .summary strong {
+        display: block;
+        font-size: 1.5rem;
+      }
+      .search {
+        width: 100%;
+        padding: 0.75rem 0.9rem;
+        border-radius: 0.75rem;
+        border: 1px solid #c7d2e5;
+        margin: 1rem 0 1.5rem;
+      }
+      .nav-list,
+      .meta-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .nav-list li + li {
+        margin-top: 0.5rem;
+      }
+      .nav-button {
+        width: 100%;
+        display: block;
+        border: 0;
+        border-radius: 0.7rem;
+        background: transparent;
+        color: #24427a;
+        cursor: pointer;
+        padding: 0.55rem 0.7rem;
+        text-align: left;
+      }
+      .nav-button:hover,
+      .nav-button[aria-current='page'] {
+        background: #e8eefb;
+        text-decoration: none;
+      }
+      .nav-button small {
+        display: block;
+        color: #5e6d8c;
+        margin-top: 0.15rem;
+      }
+      .view[hidden] {
+        display: none;
+      }
+      .muted {
+        color: #5e6d8c;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0;
+        list-style: none;
+      }
+      .chip {
+        border-radius: 999px;
+        background: #e8eefb;
+        color: #24427a;
+        padding: 0.25rem 0.65rem;
+        font-size: 0.85rem;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 0.8rem;
+      }
+      th,
+      td {
+        padding: 0.6rem;
+        border-bottom: 1px solid #e2e7f2;
+        text-align: left;
+        vertical-align: top;
+      }
+      pre {
+        overflow: auto;
+        border-radius: 0.75rem;
+        background: #0f1729;
+        color: #e7edf7;
+        padding: 1rem;
+      }
+      .empty {
+        font-style: italic;
+        color: #6f7f9c;
+      }
+      .mermaid {
+        margin: 1rem 0;
+        overflow: auto;
+      }
+      details > summary {
+        cursor: pointer;
+        color: #5e6d8c;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        user-select: none;
+      }
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          position: static;
+          max-height: none;
+          border-right: 0;
+          border-bottom: 1px solid #d8dfec;
+        }
+        .content {
+          padding: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <p class="muted">Generated with Paradox</p>
+        <h1>@ankhorage/state-legend</h1>
+        <p></p>
+        <input id="search" class="search" type="search" placeholder="Search current view" />
+        <nav aria-label="Documentation sections">
+          <ul class="nav-list">
+            <li>
+              <button class="nav-button" type="button" data-target="home" aria-current="page">
+                Home
+                <small>Overview, CLI, public API, diagrams</small>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="content">
+        <section id="view-home" class="view" data-view="home">
+          <section class="panel">
+            <h2>Package overview</h2>
+            <div class="summary">
+              <div><strong>0</strong><span class="muted">public exports</span></div>
+              <div><strong>0</strong><span class="muted">components</span></div>
+              <div><strong>1</strong><span class="muted">modules</span></div>
+              <div><strong>1</strong><span class="muted">entrypoints</span></div>
+            </div>
+            <h3>Entrypoints</h3>
+            <ul class="meta-list">
+              <li><code>src/index.ts</code></li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <h2>Modules</h2>
+            <article class="item" data-search="src/index.ts">
+              <h3>src/index.ts</h3>
+              <p class="muted">Configured entrypoint</p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+              <p><strong>Exports:</strong> <span class="empty">None</span></p>
+            </article>
+          </section>
+          <section class="panel">
+            <h2>Public API</h2>
+          </section>
+          <section class="panel">
+            <h2>Component registry</h2>
+            <p class="empty">No components were detected.</p>
+          </section>
+          <section class="panel">
+            <h2>Diagrams</h2>
+            <article
+              class="item"
+              data-search="Architecture overview diagrams/architecture-overview.mmd"
+            >
+              <h3>Architecture overview</h3>
+              <p class="muted"><code>diagrams/architecture-overview.mmd</code></p>
+              <div class="mermaid">
+                graph TD package__ankhorage_state_legend[&quot;@ankhorage/state-legend&quot;]
+                entrypoint_src_index_ts[&quot;src/index.ts&quot;] package__ankhorage_state_legend
+                --&gt; entrypoint_src_index_ts module_src_index_ts[&quot;src/index.ts&quot;]
+              </div>
+              <details>
+                <summary>View Mermaid source</summary>
+                <pre>
+graph TD
+  package__ankhorage_state_legend[&quot;@ankhorage/state-legend&quot;]
+  entrypoint_src_index_ts[&quot;src/index.ts&quot;]
+  package__ankhorage_state_legend --&gt; entrypoint_src_index_ts
+  module_src_index_ts[&quot;src/index.ts&quot;]
+</pre
+                >
+              </details>
+            </article>
+            <article
+              class="item"
+              data-search="Module relationships diagrams/module-relationships.mmd"
+            >
+              <h3>Module relationships</h3>
+              <p class="muted"><code>diagrams/module-relationships.mmd</code></p>
+              <div class="mermaid">graph LR module_src_index_ts[&quot;src/index.ts&quot;]</div>
+              <details>
+                <summary>View Mermaid source</summary>
+                <pre>
+graph LR
+  module_src_index_ts[&quot;src/index.ts&quot;]
+</pre
+                >
+              </details>
+            </article>
+            <article class="item" data-search="Export graph diagrams/export-graph.mmd">
+              <h3>Export graph</h3>
+              <p class="muted"><code>diagrams/export-graph.mmd</code></p>
+              <div class="mermaid">graph LR module_src_index_ts[&quot;src/index.ts&quot;]</div>
+              <details>
+                <summary>View Mermaid source</summary>
+                <pre>
+graph LR
+  module_src_index_ts[&quot;src/index.ts&quot;]
+</pre
+                >
+              </details>
+            </article>
+          </section>
+        </section>
+      </main>
+    </div>
+    <script>
+      const search = document.getElementById('search');
+      const navButtons = Array.from(document.querySelectorAll('[data-target]'));
+      const views = Array.from(document.querySelectorAll('[data-view]'));
+
+      function getActiveView() {
+        return document.querySelector('[data-view]:not([hidden])');
+      }
+
+      function applySearch() {
+        const value = search?.value.trim().toLowerCase() || '';
+        const activeView = getActiveView();
+        const items = Array.from(activeView?.querySelectorAll('[data-search]') || []);
+
+        for (const item of items) {
+          const haystack = (item.getAttribute('data-search') || '').toLowerCase();
+          item.style.display = value === '' || haystack.includes(value) ? '' : 'none';
+        }
+      }
+
+      for (const button of navButtons) {
+        button.addEventListener('click', () => {
+          const target = button.getAttribute('data-target');
+
+          for (const view of views) {
+            view.hidden = view.getAttribute('data-view') !== target;
+          }
+
+          for (const item of navButtons) {
+            item.setAttribute('aria-current', item === button ? 'page' : 'false');
+          }
+
+          if (search) search.value = '';
+          applySearch();
+        });
+      }
+
+      search?.addEventListener('input', applySearch);
+    </script>
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>

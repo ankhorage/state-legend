@@ -1,0 +1,82 @@
+{
+  "packageName": "@ankhorage/state-legend",
+  "packageId": "@ankhorage/state-legend",
+  "description": "",
+  "badges": [
+    {
+      "id": "license",
+      "label": "license",
+      "value": "MIT",
+      "color": "2563eb"
+    },
+    {
+      "id": "npm",
+      "label": "npm",
+      "value": "v0.0.0",
+      "color": "cb3837"
+    },
+    {
+      "id": "runtime",
+      "label": "runtime",
+      "value": "bun",
+      "color": "f59e0b"
+    },
+    {
+      "id": "typescript",
+      "label": "typescript",
+      "value": "strict",
+      "color": "2563eb"
+    },
+    {
+      "id": "eslint",
+      "label": "eslint",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "prettier",
+      "label": "prettier",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "build",
+      "label": "build",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "tests",
+      "label": "tests",
+      "value": "checked",
+      "color": "0a7f3f"
+    },
+    {
+      "id": "docs",
+      "label": "docs",
+      "value": "paradox",
+      "color": "0f766e"
+    }
+  ],
+  "usage": null,
+  "config": null,
+  "entrypoints": ["src/index.ts"],
+  "modules": [
+    {
+      "path": "src/index.ts",
+      "isEntrypoint": true,
+      "dependencies": [],
+      "exports": []
+    }
+  ],
+  "exports": [],
+  "components": [],
+  "sourceFunctions": [],
+  "sequenceScenarios": [],
+  "graphs": {
+    "imports": [],
+    "calls": [],
+    "typeReferences": [],
+    "componentComposition": []
+  }
+}
