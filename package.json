@@ -48,7 +48,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "bun x tsc -p tsconfig.json",
+    "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json",
     "changeset": "changeset",
     "changeset:status": "changeset status --since=origin/main",
     "docs": "paradox",

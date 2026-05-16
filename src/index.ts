@@ -29,9 +29,7 @@ type StateRecord = Record<string, StateValue>;
 
 type StateListenerSet = Set<(value: StateValue | undefined) => void>;
 
-export function createLegendStateAdapter(
-  options: LegendStateAdapterOptions = {},
-): StateAdapter {
+export function createLegendStateAdapter(options: LegendStateAdapterOptions = {}): StateAdapter {
   const root$ = observable<{ state: unknown }>({ state: { ...(options.initialState ?? {}) } });
   const listeners = new Map<string, StateListenerSet>();
 
@@ -88,7 +86,8 @@ export function createLegendStateAdapter(
       if (!pathResult.ok) return pathResult;
 
       const key = pathPartsToKey(pathResult.parts);
-      const listenersForPath = listeners.get(key) ?? new Set<(value: StateValue | undefined) => void>();
+      const listenersForPath =
+        listeners.get(key) ?? new Set<(value: StateValue | undefined) => void>();
       const wrappedListener = (value: StateValue | undefined) => {
         listener({ path, value: value as TValue | undefined });
       };
@@ -245,7 +244,10 @@ function isPlainStateRecord(value: unknown): value is StateRecord {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
-function createError(code: string, message: string): { readonly ok: false; readonly error: StateAdapterError } {
+function createError(
+  code: string,
+  message: string,
+): { readonly ok: false; readonly error: StateAdapterError } {
   return {
     ok: false,
     error: { code, message },
