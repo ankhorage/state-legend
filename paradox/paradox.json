@@ -66,17 +66,400 @@
       "path": "src/index.ts",
       "isEntrypoint": true,
       "dependencies": [],
-      "exports": []
+      "exports": ["createLegendStateAdapter", "LegendStateAdapterOptions"]
     }
   ],
-  "exports": [],
+  "exports": [
+    {
+      "name": "createLegendStateAdapter",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "function",
+      "modulePath": "src/index.ts",
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 32,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": ["LegendStateAdapterOptions"],
+      "signatures": [
+        {
+          "label": "(options?: LegendStateAdapterOptions) => StateAdapter",
+          "parameters": [
+            {
+              "name": "options",
+              "type": "LegendStateAdapterOptions",
+              "required": false,
+              "description": null
+            }
+          ],
+          "returnType": "StateAdapter",
+          "returnDescription": null
+        }
+      ],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "LegendStateAdapterOptions",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/index.ts",
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 12,
+        "column": 1
+      },
+      "exportPaths": ["src/index.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [
+        {
+          "name": "initialState",
+          "kind": "property",
+          "type": "Record<string, StateValue> | undefined",
+          "required": false,
+          "description": null
+        }
+      ],
+      "structuredRows": []
+    }
+  ],
   "components": [],
-  "sourceFunctions": [],
-  "sequenceScenarios": [],
+  "sourceFunctions": [
+    {
+      "name": "createLegendStateAdapter",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 32,
+        "column": 1
+      }
+    },
+    {
+      "name": "readRootState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 36,
+        "column": 9
+      }
+    },
+    {
+      "name": "writeRootState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 41,
+        "column": 9
+      }
+    },
+    {
+      "name": "emit",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 45,
+        "column": 9
+      }
+    },
+    {
+      "name": "wrappedListener",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 91,
+        "column": 13
+      }
+    },
+    {
+      "name": "normalizePath",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 126,
+        "column": 1
+      }
+    },
+    {
+      "name": "pathPartsToKey",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 140,
+        "column": 1
+      }
+    },
+    {
+      "name": "readPath",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 144,
+        "column": 1
+      }
+    },
+    {
+      "name": "setPath",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 158,
+        "column": 1
+      }
+    },
+    {
+      "name": "deletePath",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 199,
+        "column": 1
+      }
+    },
+    {
+      "name": "isPlainStateRecord",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 243,
+        "column": 1
+      }
+    },
+    {
+      "name": "createError",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 247,
+        "column": 1
+      }
+    },
+    {
+      "name": "createStateDataResult",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 257,
+        "column": 1
+      }
+    }
+  ],
+  "sequenceScenarios": [
+    {
+      "kind": "export",
+      "name": "createLegendStateAdapter",
+      "sourcePath": "src/index.ts",
+      "symbolName": "createLegendStateAdapter",
+      "description": null,
+      "isReadme": false
+    }
+  ],
   "graphs": {
     "imports": [],
-    "calls": [],
-    "typeReferences": [],
+    "calls": [
+      {
+        "fromSymbol": "createLegendStateAdapter",
+        "toSymbol": "observable",
+        "callExpression": "observable",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "readRootState",
+        "toSymbol": "isPlainStateRecord",
+        "callExpression": "isPlainStateRecord",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "emit",
+        "toSymbol": "normalizePath",
+        "callExpression": "normalizePath",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "emit",
+        "toSymbol": "pathPartsToKey",
+        "callExpression": "pathPartsToKey",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "emit",
+        "toSymbol": "listener",
+        "callExpression": "listener",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "get",
+        "toSymbol": "normalizePath",
+        "callExpression": "normalizePath",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "get",
+        "toSymbol": "readPath",
+        "callExpression": "readPath",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "get",
+        "toSymbol": "readRootState",
+        "callExpression": "readRootState",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "get",
+        "toSymbol": "createStateDataResult",
+        "callExpression": "createStateDataResult",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "set",
+        "toSymbol": "normalizePath",
+        "callExpression": "normalizePath",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "set",
+        "toSymbol": "setPath",
+        "callExpression": "setPath",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "set",
+        "toSymbol": "readRootState",
+        "callExpression": "readRootState",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "set",
+        "toSymbol": "writeRootState",
+        "callExpression": "writeRootState",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "set",
+        "toSymbol": "emit",
+        "callExpression": "emit",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "subscribe",
+        "toSymbol": "normalizePath",
+        "callExpression": "normalizePath",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "subscribe",
+        "toSymbol": "pathPartsToKey",
+        "callExpression": "pathPartsToKey",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "wrappedListener",
+        "toSymbol": "listener",
+        "callExpression": "listener",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "delete",
+        "toSymbol": "normalizePath",
+        "callExpression": "normalizePath",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "delete",
+        "toSymbol": "deletePath",
+        "callExpression": "deletePath",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "delete",
+        "toSymbol": "readRootState",
+        "callExpression": "readRootState",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "delete",
+        "toSymbol": "writeRootState",
+        "callExpression": "writeRootState",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "delete",
+        "toSymbol": "emit",
+        "callExpression": "emit",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "normalizePath",
+        "toSymbol": "createError",
+        "callExpression": "createError",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "readPath",
+        "toSymbol": "isPlainStateRecord",
+        "callExpression": "isPlainStateRecord",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "setPath",
+        "toSymbol": "createError",
+        "callExpression": "createError",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "setPath",
+        "toSymbol": "isPlainStateRecord",
+        "callExpression": "isPlainStateRecord",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "setPath",
+        "toSymbol": "setPath",
+        "callExpression": "setPath",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "deletePath",
+        "toSymbol": "createError",
+        "callExpression": "createError",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "deletePath",
+        "toSymbol": "isPlainStateRecord",
+        "callExpression": "isPlainStateRecord",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "deletePath",
+        "toSymbol": "deletePath",
+        "callExpression": "deletePath",
+        "sourcePath": "src/index.ts"
+      }
+    ],
+    "typeReferences": [
+      {
+        "fromSymbol": "createLegendStateAdapter",
+        "toType": "LegendStateAdapterOptions",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "createLegendStateAdapter",
+        "toType": "StateAdapter",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "LegendStateAdapterOptions",
+        "toType": "StateValue",
+        "sourcePath": "src/index.ts"
+      }
+    ],
     "componentComposition": []
   }
 }

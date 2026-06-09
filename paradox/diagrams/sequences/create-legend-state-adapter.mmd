@@ -1,0 +1,5 @@
+sequenceDiagram
+  participant participant_createLegendStateAdapter as createLegendStateAdapter
+  participant participant_observable as observable
+  participant_createLegendStateAdapter->>participant_observable: observable()
+  participant_observable-->>participant_createLegendStateAdapter: return

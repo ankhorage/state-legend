@@ -1,2 +1,7 @@
 graph LR
   module_src_index_ts["src/index.ts"]
+  export_createLegendStateAdapter["createLegendStateAdapter"]
+  module_src_index_ts --> export_createLegendStateAdapter
+  export_createLegendStateAdapter -.-> export_LegendStateAdapterOptions
+  export_LegendStateAdapterOptions["LegendStateAdapterOptions"]
+  module_src_index_ts --> export_LegendStateAdapterOptions

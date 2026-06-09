@@ -195,6 +195,12 @@
                 <small>Overview, CLI, public API, diagrams</small>
               </button>
             </li>
+            <li>
+              <button class="nav-button" type="button" data-target="src/index.ts">
+                src/index.ts
+                <small>13 functions</small>
+              </button>
+            </li>
           </ul>
         </nav>
       </aside>
@@ -203,7 +209,7 @@
           <section class="panel">
             <h2>Package overview</h2>
             <div class="summary">
-              <div><strong>0</strong><span class="muted">public exports</span></div>
+              <div><strong>2</strong><span class="muted">public exports</span></div>
               <div><strong>0</strong><span class="muted">components</span></div>
               <div><strong>1</strong><span class="muted">modules</span></div>
               <div><strong>1</strong><span class="muted">entrypoints</span></div>
@@ -216,15 +222,96 @@
 
           <section class="panel">
             <h2>Modules</h2>
-            <article class="item" data-search="src/index.ts">
+            <article
+              class="item"
+              data-search="src/index.ts createLegendStateAdapter LegendStateAdapterOptions"
+            >
               <h3>src/index.ts</h3>
               <p class="muted">Configured entrypoint</p>
               <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-              <p><strong>Exports:</strong> <span class="empty">None</span></p>
+              <p>
+                <strong>Exports:</strong> <code>createLegendStateAdapter</code>,
+                <code>LegendStateAdapterOptions</code>
+              </p>
             </article>
           </section>
           <section class="panel">
             <h2>Public API</h2>
+
+            <section>
+              <h3>src/index.ts</h3>
+              <article
+                class="item"
+                id="symbol-createlegendstateadapter"
+                data-search="createLegendStateAdapter function src/index.ts  LegendStateAdapterOptions (options?: LegendStateAdapterOptions) =&gt; StateAdapter"
+              >
+                <h4>createLegendStateAdapter</h4>
+                <p class="muted">function • <code>src/index.ts:32:1</code></p>
+
+                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+                <div>
+                  <strong>Related symbols:</strong>
+                  <ul class="chips">
+                    <li class="chip">LegendStateAdapterOptions</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5>Signature</h5>
+                  <pre>(options?: LegendStateAdapterOptions) =&gt; StateAdapter</pre>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Parameter</th>
+                        <th>Type</th>
+                        <th>Required</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>options</code></td>
+                        <td><code>LegendStateAdapterOptions</code></td>
+                        <td>no</td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p><strong>Returns:</strong> <code>StateAdapter</code></p>
+                </div>
+              </article>
+              <article
+                class="item"
+                id="symbol-legendstateadapteroptions"
+                data-search="LegendStateAdapterOptions type src/index.ts "
+              >
+                <h4>LegendStateAdapterOptions</h4>
+                <p class="muted">type • <code>src/index.ts:12:1</code></p>
+
+                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Member</th>
+                      <th>Kind</th>
+                      <th>Type</th>
+                      <th>Required</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>initialState</code></td>
+                      <td>property</td>
+                      <td><code>Record&lt;string, StateValue&gt; | undefined</code></td>
+                      <td>no</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+            </section>
           </section>
           <section class="panel">
             <h2>Component registry</h2>
@@ -274,15 +361,121 @@ graph LR
             <article class="item" data-search="Export graph diagrams/export-graph.mmd">
               <h3>Export graph</h3>
               <p class="muted"><code>diagrams/export-graph.mmd</code></p>
-              <div class="mermaid">graph LR module_src_index_ts[&quot;src/index.ts&quot;]</div>
+              <div class="mermaid">
+                graph LR module_src_index_ts[&quot;src/index.ts&quot;]
+                export_createLegendStateAdapter[&quot;createLegendStateAdapter&quot;]
+                module_src_index_ts --&gt; export_createLegendStateAdapter
+                export_createLegendStateAdapter -.-&gt; export_LegendStateAdapterOptions
+                export_LegendStateAdapterOptions[&quot;LegendStateAdapterOptions&quot;]
+                module_src_index_ts --&gt; export_LegendStateAdapterOptions
+              </div>
               <details>
                 <summary>View Mermaid source</summary>
                 <pre>
 graph LR
   module_src_index_ts[&quot;src/index.ts&quot;]
+  export_createLegendStateAdapter[&quot;createLegendStateAdapter&quot;]
+  module_src_index_ts --&gt; export_createLegendStateAdapter
+  export_createLegendStateAdapter -.-&gt; export_LegendStateAdapterOptions
+  export_LegendStateAdapterOptions[&quot;LegendStateAdapterOptions&quot;]
+  module_src_index_ts --&gt; export_LegendStateAdapterOptions
 </pre
                 >
               </details>
+            </article>
+            <article
+              class="item"
+              data-search="createLegendStateAdapter sequence diagrams/sequences/create-legend-state-adapter.mmd"
+            >
+              <h3>createLegendStateAdapter sequence</h3>
+              <p class="muted"><code>diagrams/sequences/create-legend-state-adapter.mmd</code></p>
+              <div class="mermaid">
+                sequenceDiagram participant participant_createLegendStateAdapter as
+                createLegendStateAdapter participant participant_observable as observable
+                participant_createLegendStateAdapter-&gt;&gt;participant_observable: observable()
+                participant_observable--&gt;&gt;participant_createLegendStateAdapter: return
+              </div>
+              <details>
+                <summary>View Mermaid source</summary>
+                <pre>
+sequenceDiagram
+  participant participant_createLegendStateAdapter as createLegendStateAdapter
+  participant participant_observable as observable
+  participant_createLegendStateAdapter-&gt;&gt;participant_observable: observable()
+  participant_observable--&gt;&gt;participant_createLegendStateAdapter: return
+</pre
+                >
+              </details>
+            </article>
+          </section>
+        </section>
+        <section id="view-src-index-ts" class="view" data-view="src/index.ts" hidden>
+          <section class="panel">
+            <h2>src/index.ts</h2>
+            <article class="item" data-search="createLegendStateAdapter src/index.ts ">
+              <h3>createLegendStateAdapter</h3>
+              <p class="muted"><code>src/index.ts:32:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="readRootState src/index.ts ">
+              <h3>readRootState</h3>
+              <p class="muted"><code>src/index.ts:36:9</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="writeRootState src/index.ts ">
+              <h3>writeRootState</h3>
+              <p class="muted"><code>src/index.ts:41:9</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="emit src/index.ts ">
+              <h3>emit</h3>
+              <p class="muted"><code>src/index.ts:45:9</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="wrappedListener src/index.ts ">
+              <h3>wrappedListener</h3>
+              <p class="muted"><code>src/index.ts:91:13</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="normalizePath src/index.ts ">
+              <h3>normalizePath</h3>
+              <p class="muted"><code>src/index.ts:126:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="pathPartsToKey src/index.ts ">
+              <h3>pathPartsToKey</h3>
+              <p class="muted"><code>src/index.ts:140:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="readPath src/index.ts ">
+              <h3>readPath</h3>
+              <p class="muted"><code>src/index.ts:144:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="setPath src/index.ts ">
+              <h3>setPath</h3>
+              <p class="muted"><code>src/index.ts:158:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="deletePath src/index.ts ">
+              <h3>deletePath</h3>
+              <p class="muted"><code>src/index.ts:199:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="isPlainStateRecord src/index.ts ">
+              <h3>isPlainStateRecord</h3>
+              <p class="muted"><code>src/index.ts:243:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="createError src/index.ts ">
+              <h3>createError</h3>
+              <p class="muted"><code>src/index.ts:247:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="createStateDataResult src/index.ts ">
+              <h3>createStateDataResult</h3>
+              <p class="muted"><code>src/index.ts:257:1</code></p>
+              <p class="empty">No description available.</p>
             </article>
           </section>
         </section>

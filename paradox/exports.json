@@ -1,1 +1,60 @@
-[]
+[
+  {
+    "name": "createLegendStateAdapter",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/index.ts",
+    "sourceLocation": {
+      "filePath": "src/index.ts",
+      "line": 32,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["LegendStateAdapterOptions"],
+    "signatures": [
+      {
+        "label": "(options?: LegendStateAdapterOptions) => StateAdapter",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "LegendStateAdapterOptions",
+            "required": false,
+            "description": null
+          }
+        ],
+        "returnType": "StateAdapter",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "LegendStateAdapterOptions",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/index.ts",
+    "sourceLocation": {
+      "filePath": "src/index.ts",
+      "line": 12,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "initialState",
+        "kind": "property",
+        "type": "Record<string, StateValue> | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  }
+]
