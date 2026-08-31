@@ -4,7 +4,7 @@
 
 Kind: `function`
 Module: `src/index.ts`
-Source: `src/index.ts:32:1`
+Source: `src/index.ts:39:1`
 
 ### Signatures
 

@@ -198,7 +198,7 @@
             <li>
               <button class="nav-button" type="button" data-target="src/index.ts">
                 src/index.ts
-                <small>13 functions</small>
+                <small>18 functions</small>
               </button>
             </li>
           </ul>
@@ -246,7 +246,7 @@
                 data-search="createLegendStateAdapter function src/index.ts  LegendStateAdapterOptions (options?: LegendStateAdapterOptions) =&gt; StateAdapter"
               >
                 <h4>createLegendStateAdapter</h4>
-                <p class="muted">function • <code>src/index.ts:32:1</code></p>
+                <p class="muted">function • <code>src/index.ts:39:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -338,8 +338,7 @@ graph TD
   entrypoint_src_index_ts[&quot;src/index.ts&quot;]
   package__ankhorage_state_legend --&gt; entrypoint_src_index_ts
   module_src_index_ts[&quot;src/index.ts&quot;]
-</pre
-                >
+</pre>
               </details>
             </article>
             <article
@@ -354,8 +353,7 @@ graph TD
                 <pre>
 graph LR
   module_src_index_ts[&quot;src/index.ts&quot;]
-</pre
-                >
+</pre>
               </details>
             </article>
             <article class="item" data-search="Export graph diagrams/export-graph.mmd">
@@ -379,8 +377,7 @@ graph LR
   export_createLegendStateAdapter -.-&gt; export_LegendStateAdapterOptions
   export_LegendStateAdapterOptions[&quot;LegendStateAdapterOptions&quot;]
   module_src_index_ts --&gt; export_LegendStateAdapterOptions
-</pre
-                >
+</pre>
               </details>
             </article>
             <article
@@ -390,21 +387,57 @@ graph LR
               <h3>createLegendStateAdapter sequence</h3>
               <p class="muted"><code>diagrams/sequences/create-legend-state-adapter.mmd</code></p>
               <div class="mermaid">
-                sequenceDiagram participant participant_createLegendStateAdapter as
-                createLegendStateAdapter participant participant_observable as observable
-                participant_createLegendStateAdapter-&gt;&gt;participant_observable: observable()
-                participant_observable--&gt;&gt;participant_createLegendStateAdapter: return
+                sequenceDiagram participant participant_createDeleteOperation as
+                createDeleteOperation participant participant_createGetOperation as
+                createGetOperation participant participant_createLegendStateAdapter as
+                createLegendStateAdapter participant participant_createLegendStateContext as
+                createLegendStateContext participant participant_createSetOperation as
+                createSetOperation participant participant_createSubscribeOperation as
+                createSubscribeOperation participant participant_observable as observable
+                participant_createLegendStateAdapter-&gt;&gt;participant_createLegendStateContext:
+                createLegendStateContext()
+                participant_createLegendStateContext-&gt;&gt;participant_observable: observable()
+                participant_observable--&gt;&gt;participant_createLegendStateContext: return
+                participant_createLegendStateContext--&gt;&gt;participant_createLegendStateAdapter:
+                return participant_createLegendStateAdapter-&gt;&gt;participant_createGetOperation:
+                createGetOperation()
+                participant_createGetOperation--&gt;&gt;participant_createLegendStateAdapter: return
+                participant_createLegendStateAdapter-&gt;&gt;participant_createSetOperation:
+                createSetOperation()
+                participant_createSetOperation--&gt;&gt;participant_createLegendStateAdapter: return
+                participant_createLegendStateAdapter-&gt;&gt;participant_createSubscribeOperation:
+                createSubscribeOperation()
+                participant_createSubscribeOperation--&gt;&gt;participant_createLegendStateAdapter:
+                return
+                participant_createLegendStateAdapter-&gt;&gt;participant_createDeleteOperation:
+                createDeleteOperation()
+                participant_createDeleteOperation--&gt;&gt;participant_createLegendStateAdapter:
+                return
               </div>
               <details>
                 <summary>View Mermaid source</summary>
                 <pre>
 sequenceDiagram
+  participant participant_createDeleteOperation as createDeleteOperation
+  participant participant_createGetOperation as createGetOperation
   participant participant_createLegendStateAdapter as createLegendStateAdapter
+  participant participant_createLegendStateContext as createLegendStateContext
+  participant participant_createSetOperation as createSetOperation
+  participant participant_createSubscribeOperation as createSubscribeOperation
   participant participant_observable as observable
-  participant_createLegendStateAdapter-&gt;&gt;participant_observable: observable()
-  participant_observable--&gt;&gt;participant_createLegendStateAdapter: return
-</pre
-                >
+  participant_createLegendStateAdapter-&gt;&gt;participant_createLegendStateContext: createLegendStateContext()
+  participant_createLegendStateContext-&gt;&gt;participant_observable: observable()
+  participant_observable--&gt;&gt;participant_createLegendStateContext: return
+  participant_createLegendStateContext--&gt;&gt;participant_createLegendStateAdapter: return
+  participant_createLegendStateAdapter-&gt;&gt;participant_createGetOperation: createGetOperation()
+  participant_createGetOperation--&gt;&gt;participant_createLegendStateAdapter: return
+  participant_createLegendStateAdapter-&gt;&gt;participant_createSetOperation: createSetOperation()
+  participant_createSetOperation--&gt;&gt;participant_createLegendStateAdapter: return
+  participant_createLegendStateAdapter-&gt;&gt;participant_createSubscribeOperation: createSubscribeOperation()
+  participant_createSubscribeOperation--&gt;&gt;participant_createLegendStateAdapter: return
+  participant_createLegendStateAdapter-&gt;&gt;participant_createDeleteOperation: createDeleteOperation()
+  participant_createDeleteOperation--&gt;&gt;participant_createLegendStateAdapter: return
+</pre>
               </details>
             </article>
           </section>
@@ -414,67 +447,92 @@ sequenceDiagram
             <h2>src/index.ts</h2>
             <article class="item" data-search="createLegendStateAdapter src/index.ts ">
               <h3>createLegendStateAdapter</h3>
-              <p class="muted"><code>src/index.ts:32:1</code></p>
+              <p class="muted"><code>src/index.ts:39:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="createLegendStateContext src/index.ts ">
+              <h3>createLegendStateContext</h3>
+              <p class="muted"><code>src/index.ts:54:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="readRootState src/index.ts ">
               <h3>readRootState</h3>
-              <p class="muted"><code>src/index.ts:36:9</code></p>
+              <p class="muted"><code>src/index.ts:57:9</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="writeRootState src/index.ts ">
               <h3>writeRootState</h3>
-              <p class="muted"><code>src/index.ts:41:9</code></p>
+              <p class="muted"><code>src/index.ts:61:9</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="emit src/index.ts ">
               <h3>emit</h3>
-              <p class="muted"><code>src/index.ts:45:9</code></p>
+              <p class="muted"><code>src/index.ts:64:9</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="createGetOperation src/index.ts ">
+              <h3>createGetOperation</h3>
+              <p class="muted"><code>src/index.ts:78:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="createSetOperation src/index.ts ">
+              <h3>createSetOperation</h3>
+              <p class="muted"><code>src/index.ts:89:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="createSubscribeOperation src/index.ts ">
+              <h3>createSubscribeOperation</h3>
+              <p class="muted"><code>src/index.ts:104:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="wrappedListener src/index.ts ">
               <h3>wrappedListener</h3>
-              <p class="muted"><code>src/index.ts:91:13</code></p>
+              <p class="muted"><code>src/index.ts:114:11</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="createDeleteOperation src/index.ts ">
+              <h3>createDeleteOperation</h3>
+              <p class="muted"><code>src/index.ts:131:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="normalizePath src/index.ts ">
               <h3>normalizePath</h3>
-              <p class="muted"><code>src/index.ts:126:1</code></p>
+              <p class="muted"><code>src/index.ts:143:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="pathPartsToKey src/index.ts ">
               <h3>pathPartsToKey</h3>
-              <p class="muted"><code>src/index.ts:140:1</code></p>
+              <p class="muted"><code>src/index.ts:157:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="readPath src/index.ts ">
               <h3>readPath</h3>
-              <p class="muted"><code>src/index.ts:144:1</code></p>
+              <p class="muted"><code>src/index.ts:161:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="setPath src/index.ts ">
               <h3>setPath</h3>
-              <p class="muted"><code>src/index.ts:158:1</code></p>
+              <p class="muted"><code>src/index.ts:175:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="deletePath src/index.ts ">
               <h3>deletePath</h3>
-              <p class="muted"><code>src/index.ts:199:1</code></p>
+              <p class="muted"><code>src/index.ts:216:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="isPlainStateRecord src/index.ts ">
               <h3>isPlainStateRecord</h3>
-              <p class="muted"><code>src/index.ts:243:1</code></p>
+              <p class="muted"><code>src/index.ts:253:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="createError src/index.ts ">
               <h3>createError</h3>
-              <p class="muted"><code>src/index.ts:247:1</code></p>
+              <p class="muted"><code>src/index.ts:257:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="createStateDataResult src/index.ts ">
               <h3>createStateDataResult</h3>
-              <p class="muted"><code>src/index.ts:257:1</code></p>
+              <p class="muted"><code>src/index.ts:267:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>

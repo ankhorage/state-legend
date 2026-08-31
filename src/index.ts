@@ -29,19 +29,38 @@ type StateRecord = Record<string, StateValue>;
 
 type StateListenerSet = Set<(value: StateValue | undefined) => void>;
 
+interface LegendStateContext {
+  readonly emit: (path: StatePath, value: StateValue | undefined) => void;
+  readonly listeners: Map<string, StateListenerSet>;
+  readonly readRootState: () => StateRecord;
+  readonly writeRootState: (nextState: StateRecord) => void;
+}
+
 export function createLegendStateAdapter(options: LegendStateAdapterOptions = {}): StateAdapter {
+  const context = createLegendStateContext(options);
+  return {
+    capabilities: {
+      subscriptions: true,
+      computed: false,
+      persistence: false,
+    },
+    get: createGetOperation(context),
+    set: createSetOperation(context),
+    subscribe: createSubscribeOperation(context),
+    delete: createDeleteOperation(context),
+  };
+}
+
+function createLegendStateContext(options: LegendStateAdapterOptions): LegendStateContext {
   const root$ = observable<{ state: unknown }>({ state: { ...(options.initialState ?? {}) } });
   const listeners = new Map<string, StateListenerSet>();
-
   const readRootState = (): StateRecord => {
     const currentState = root$.state.get();
     return isPlainStateRecord(currentState) ? currentState : {};
   };
-
   const writeRootState = (nextState: StateRecord) => {
     root$.state.set(nextState);
   };
-
   const emit = (path: StatePath, value: StateValue | undefined) => {
     const keyResult = normalizePath(path);
     if (!keyResult.ok) return;
@@ -53,73 +72,71 @@ export function createLegendStateAdapter(options: LegendStateAdapterOptions = {}
       listener(value);
     }
   };
+  return { emit, listeners, readRootState, writeRootState };
+}
 
-  return {
-    capabilities: {
-      subscriptions: true,
-      computed: false,
-      persistence: false,
-    },
-    get<TValue extends StateValue = StateValue>(path: StatePath): StateResult<TValue | undefined> {
-      const pathResult = normalizePath(path);
-      if (!pathResult.ok) return pathResult;
+function createGetOperation(context: LegendStateContext): StateAdapter['get'] {
+  return function get<TValue extends StateValue = StateValue>(
+    path: StatePath,
+  ): StateResult<TValue | undefined> {
+    const pathResult = normalizePath(path);
+    if (!pathResult.ok) return pathResult;
+    const value = readPath(context.readRootState(), pathResult.parts);
+    return createStateDataResult<TValue | undefined>(value as TValue | undefined);
+  };
+}
 
-      const value = readPath(readRootState(), pathResult.parts);
-      return createStateDataResult<TValue | undefined>(value as TValue | undefined);
-    },
-    set<TValue extends StateValue = StateValue>(path: StatePath, value: TValue): StateResult {
-      const pathResult = normalizePath(path);
-      if (!pathResult.ok) return pathResult;
+function createSetOperation(context: LegendStateContext): StateAdapter['set'] {
+  return function set<TValue extends StateValue = StateValue>(
+    path: StatePath,
+    value: TValue,
+  ): StateResult {
+    const pathResult = normalizePath(path);
+    if (!pathResult.ok) return pathResult;
+    const nextStateResult = setPath(context.readRootState(), pathResult.parts, value);
+    if (!nextStateResult.ok) return nextStateResult;
+    context.writeRootState(nextStateResult.data);
+    context.emit(path, value);
+    return { ok: true };
+  };
+}
 
-      const nextStateResult = setPath(readRootState(), pathResult.parts, value);
-      if (!nextStateResult.ok) return nextStateResult;
+function createSubscribeOperation(context: LegendStateContext): StateAdapter['subscribe'] {
+  return function subscribe<TValue extends StateValue = StateValue>(
+    path: StatePath,
+    listener: StateListener<TValue>,
+  ): StateResult<StateSubscription> {
+    const pathResult = normalizePath(path);
+    if (!pathResult.ok) return pathResult;
+    const key = pathPartsToKey(pathResult.parts);
+    const listenersForPath =
+      context.listeners.get(key) ?? new Set<(value: StateValue | undefined) => void>();
+    const wrappedListener = (value: StateValue | undefined) => {
+      listener({ path, value: value as TValue | undefined });
+    };
+    listenersForPath.add(wrappedListener);
+    context.listeners.set(key, listenersForPath);
+    const subscription: StateSubscription = {
+      unsubscribe() {
+        listenersForPath.delete(wrappedListener);
+        if (listenersForPath.size === 0) {
+          context.listeners.delete(key);
+        }
+      },
+    };
+    return { ok: true, data: subscription };
+  };
+}
 
-      writeRootState(nextStateResult.data);
-      emit(path, value);
-      return { ok: true };
-    },
-    subscribe<TValue extends StateValue = StateValue>(
-      path: StatePath,
-      listener: StateListener<TValue>,
-    ): StateResult<StateSubscription> {
-      const pathResult = normalizePath(path);
-      if (!pathResult.ok) return pathResult;
-
-      const key = pathPartsToKey(pathResult.parts);
-      const listenersForPath =
-        listeners.get(key) ?? new Set<(value: StateValue | undefined) => void>();
-      const wrappedListener = (value: StateValue | undefined) => {
-        listener({ path, value: value as TValue | undefined });
-      };
-
-      listenersForPath.add(wrappedListener);
-      listeners.set(key, listenersForPath);
-
-      const subscription: StateSubscription = {
-        unsubscribe() {
-          listenersForPath.delete(wrappedListener);
-          if (listenersForPath.size === 0) {
-            listeners.delete(key);
-          }
-        },
-      };
-
-      return {
-        ok: true,
-        data: subscription,
-      };
-    },
-    delete(path: StatePath): StateResult {
-      const pathResult = normalizePath(path);
-      if (!pathResult.ok) return pathResult;
-
-      const nextStateResult = deletePath(readRootState(), pathResult.parts);
-      if (!nextStateResult.ok) return nextStateResult;
-
-      writeRootState(nextStateResult.data);
-      emit(path, undefined);
-      return { ok: true };
-    },
+function createDeleteOperation(context: LegendStateContext): NonNullable<StateAdapter['delete']> {
+  return function deleteState(path: StatePath): StateResult {
+    const pathResult = normalizePath(path);
+    if (!pathResult.ok) return pathResult;
+    const nextStateResult = deletePath(context.readRootState(), pathResult.parts);
+    if (!nextStateResult.ok) return nextStateResult;
+    context.writeRootState(nextStateResult.data);
+    context.emit(path, undefined);
+    return { ok: true };
   };
 }
 
@@ -149,7 +166,7 @@ function readPath(source: StateRecord, parts: readonly string[]): StateValue | u
       return undefined;
     }
 
-    current = current[part];
+    current = Reflect.get(current, part);
   }
 
   return current;
@@ -175,7 +192,7 @@ function setPath(
     };
   }
 
-  const existing = source[head];
+  const existing = Reflect.get(source, head) as StateValue | undefined;
   const child = existing === undefined ? {} : existing;
   if (!isPlainStateRecord(child)) {
     return createError(
@@ -203,20 +220,13 @@ function deletePath(source: StateRecord, parts: readonly string[]): StateResult<
   }
 
   if (tail.length === 0) {
-    const nextState: StateRecord = {};
-    for (const [key, entry] of Object.entries(source)) {
-      if (key !== head) {
-        nextState[key] = entry;
-      }
-    }
-
     return {
       ok: true,
-      data: nextState,
+      data: Object.fromEntries(Object.entries(source).filter(([key]) => key !== head)),
     };
   }
 
-  const existing = source[head];
+  const existing = Reflect.get(source, head) as StateValue | undefined;
   if (existing === undefined) {
     return { ok: true, data: source };
   }
