@@ -2,6 +2,8 @@
   "packageName": "@ankhorage/state-legend",
   "packageId": "@ankhorage/state-legend",
   "description": "",
+  "collaborators": null,
+  "donation": null,
   "badges": [
     {
       "id": "license",
@@ -12,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.0.0",
+      "value": "v0.1.0",
       "color": "cb3837"
     },
     {
@@ -59,6 +61,10 @@
     }
   ],
   "usage": null,
+  "readmeUsageDescription": null,
+  "readmeUsage": [],
+  "readmeCli": null,
+  "readmeConfig": null,
   "config": null,
   "entrypoints": ["src/index.ts"],
   "modules": [
@@ -79,7 +85,7 @@
       "modulePath": "src/index.ts",
       "sourceLocation": {
         "filePath": "src/index.ts",
-        "line": 32,
+        "line": 39,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -136,7 +142,16 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/index.ts",
-        "line": 32,
+        "line": 39,
+        "column": 1
+      }
+    },
+    {
+      "name": "createLegendStateContext",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 54,
         "column": 1
       }
     },
@@ -145,7 +160,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/index.ts",
-        "line": 36,
+        "line": 57,
         "column": 9
       }
     },
@@ -154,7 +169,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/index.ts",
-        "line": 41,
+        "line": 61,
         "column": 9
       }
     },
@@ -163,8 +178,35 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/index.ts",
-        "line": 45,
+        "line": 64,
         "column": 9
+      }
+    },
+    {
+      "name": "createGetOperation",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 78,
+        "column": 1
+      }
+    },
+    {
+      "name": "createSetOperation",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 89,
+        "column": 1
+      }
+    },
+    {
+      "name": "createSubscribeOperation",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 104,
+        "column": 1
       }
     },
     {
@@ -172,8 +214,17 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/index.ts",
-        "line": 91,
-        "column": 13
+        "line": 114,
+        "column": 11
+      }
+    },
+    {
+      "name": "createDeleteOperation",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/index.ts",
+        "line": 131,
+        "column": 1
       }
     },
     {
@@ -181,7 +232,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/index.ts",
-        "line": 126,
+        "line": 143,
         "column": 1
       }
     },
@@ -190,7 +241,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/index.ts",
-        "line": 140,
+        "line": 157,
         "column": 1
       }
     },
@@ -199,7 +250,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/index.ts",
-        "line": 144,
+        "line": 161,
         "column": 1
       }
     },
@@ -208,7 +259,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/index.ts",
-        "line": 158,
+        "line": 175,
         "column": 1
       }
     },
@@ -217,7 +268,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/index.ts",
-        "line": 199,
+        "line": 216,
         "column": 1
       }
     },
@@ -226,7 +277,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/index.ts",
-        "line": 243,
+        "line": 253,
         "column": 1
       }
     },
@@ -235,7 +286,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/index.ts",
-        "line": 247,
+        "line": 257,
         "column": 1
       }
     },
@@ -244,7 +295,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/index.ts",
-        "line": 257,
+        "line": 267,
         "column": 1
       }
     }
@@ -264,6 +315,36 @@
     "calls": [
       {
         "fromSymbol": "createLegendStateAdapter",
+        "toSymbol": "createLegendStateContext",
+        "callExpression": "createLegendStateContext",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "createLegendStateAdapter",
+        "toSymbol": "createGetOperation",
+        "callExpression": "createGetOperation",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "createLegendStateAdapter",
+        "toSymbol": "createSetOperation",
+        "callExpression": "createSetOperation",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "createLegendStateAdapter",
+        "toSymbol": "createSubscribeOperation",
+        "callExpression": "createSubscribeOperation",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "createLegendStateAdapter",
+        "toSymbol": "createDeleteOperation",
+        "callExpression": "createDeleteOperation",
+        "sourcePath": "src/index.ts"
+      },
+      {
+        "fromSymbol": "createLegendStateContext",
         "toSymbol": "observable",
         "callExpression": "observable",
         "sourcePath": "src/index.ts"
@@ -293,67 +374,49 @@
         "sourcePath": "src/index.ts"
       },
       {
-        "fromSymbol": "get",
+        "fromSymbol": "src/index.ts",
         "toSymbol": "normalizePath",
         "callExpression": "normalizePath",
         "sourcePath": "src/index.ts"
       },
       {
-        "fromSymbol": "get",
+        "fromSymbol": "src/index.ts",
         "toSymbol": "readPath",
         "callExpression": "readPath",
         "sourcePath": "src/index.ts"
       },
       {
-        "fromSymbol": "get",
+        "fromSymbol": "src/index.ts",
         "toSymbol": "readRootState",
-        "callExpression": "readRootState",
+        "callExpression": "context.readRootState",
         "sourcePath": "src/index.ts"
       },
       {
-        "fromSymbol": "get",
+        "fromSymbol": "src/index.ts",
         "toSymbol": "createStateDataResult",
         "callExpression": "createStateDataResult",
         "sourcePath": "src/index.ts"
       },
       {
-        "fromSymbol": "set",
-        "toSymbol": "normalizePath",
-        "callExpression": "normalizePath",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromSymbol": "set",
+        "fromSymbol": "src/index.ts",
         "toSymbol": "setPath",
         "callExpression": "setPath",
         "sourcePath": "src/index.ts"
       },
       {
-        "fromSymbol": "set",
-        "toSymbol": "readRootState",
-        "callExpression": "readRootState",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromSymbol": "set",
+        "fromSymbol": "src/index.ts",
         "toSymbol": "writeRootState",
-        "callExpression": "writeRootState",
+        "callExpression": "context.writeRootState",
         "sourcePath": "src/index.ts"
       },
       {
-        "fromSymbol": "set",
+        "fromSymbol": "src/index.ts",
         "toSymbol": "emit",
-        "callExpression": "emit",
+        "callExpression": "context.emit",
         "sourcePath": "src/index.ts"
       },
       {
-        "fromSymbol": "subscribe",
-        "toSymbol": "normalizePath",
-        "callExpression": "normalizePath",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromSymbol": "subscribe",
+        "fromSymbol": "src/index.ts",
         "toSymbol": "pathPartsToKey",
         "callExpression": "pathPartsToKey",
         "sourcePath": "src/index.ts"
@@ -365,33 +428,9 @@
         "sourcePath": "src/index.ts"
       },
       {
-        "fromSymbol": "delete",
-        "toSymbol": "normalizePath",
-        "callExpression": "normalizePath",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromSymbol": "delete",
+        "fromSymbol": "src/index.ts",
         "toSymbol": "deletePath",
         "callExpression": "deletePath",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromSymbol": "delete",
-        "toSymbol": "readRootState",
-        "callExpression": "readRootState",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromSymbol": "delete",
-        "toSymbol": "writeRootState",
-        "callExpression": "writeRootState",
-        "sourcePath": "src/index.ts"
-      },
-      {
-        "fromSymbol": "delete",
-        "toSymbol": "emit",
-        "callExpression": "emit",
         "sourcePath": "src/index.ts"
       },
       {

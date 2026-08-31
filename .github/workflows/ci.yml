@@ -23,7 +23,12 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: '1.3.13'
+          bun-version: '1.4.0'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -35,6 +40,9 @@ jobs:
           else
             echo "No build script found; skipping."
           fi
+
+      - name: Validate Ankhorage repository
+        run: bunx @ankhorage/ankh doctor validate .
 
       - name: Run lint
         run: |
@@ -54,10 +62,10 @@ jobs:
 
       - name: Run Knip
         run: |
-          if node -e "const p=require('./package.json'); process.exit(p.scripts?.knip ? 0 : 1)"; then
-            bun run knip
+          if node -e "const p=require('./package.json'); process.exit(p.scripts?.['knip:check'] ? 0 : 1)"; then
+            bun run knip:check
           else
-            echo "No knip script found; skipping."
+            echo "No knip:check script found; skipping."
           fi
 
       - name: Run tests
@@ -76,11 +84,20 @@ jobs:
             echo "No typecheck script found; skipping."
           fi
 
-      - name: Check changesets
-        if: github.event_name == 'pull_request'
+      - name: Validate Version Packages metadata
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'changeset-release/main'
         run: |
-          if [ -f ./scripts/check-changeset-status.sh ]; then
-            bash ./scripts/check-changeset-status.sh
+          if node -e "const p=require('./package.json'); process.exit(p.scripts?.changeset ? 0 : 1)"; then
+            bun run changeset -- status --since=HEAD
           else
-            echo "No changeset status script found; skipping."
+            echo "No changeset script found; skipping."
+          fi
+
+      - name: Check changesets
+        if: github.event_name == 'pull_request' && (github.event.pull_request.head.repo.full_name != github.repository || github.head_ref != 'changeset-release/main')
+        run: |
+          if node -e "const p=require('./package.json'); process.exit(p.scripts?.['changeset:status'] ? 0 : 1)"; then
+            bun run changeset:status
+          else
+            echo "No changeset:status script found; skipping."
           fi

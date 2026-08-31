@@ -1,5 +1,20 @@
 sequenceDiagram
+  participant participant_createDeleteOperation as createDeleteOperation
+  participant participant_createGetOperation as createGetOperation
   participant participant_createLegendStateAdapter as createLegendStateAdapter
+  participant participant_createLegendStateContext as createLegendStateContext
+  participant participant_createSetOperation as createSetOperation
+  participant participant_createSubscribeOperation as createSubscribeOperation
   participant participant_observable as observable
-  participant_createLegendStateAdapter->>participant_observable: observable()
-  participant_observable-->>participant_createLegendStateAdapter: return
+  participant_createLegendStateAdapter->>participant_createLegendStateContext: createLegendStateContext()
+  participant_createLegendStateContext->>participant_observable: observable()
+  participant_observable-->>participant_createLegendStateContext: return
+  participant_createLegendStateContext-->>participant_createLegendStateAdapter: return
+  participant_createLegendStateAdapter->>participant_createGetOperation: createGetOperation()
+  participant_createGetOperation-->>participant_createLegendStateAdapter: return
+  participant_createLegendStateAdapter->>participant_createSetOperation: createSetOperation()
+  participant_createSetOperation-->>participant_createLegendStateAdapter: return
+  participant_createLegendStateAdapter->>participant_createSubscribeOperation: createSubscribeOperation()
+  participant_createSubscribeOperation-->>participant_createLegendStateAdapter: return
+  participant_createLegendStateAdapter->>participant_createDeleteOperation: createDeleteOperation()
+  participant_createDeleteOperation-->>participant_createLegendStateAdapter: return

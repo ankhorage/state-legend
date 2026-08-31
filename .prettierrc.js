@@ -1,5 +1,8 @@
-import { createRequire } from 'node:module';
+import sharedConfig from '@ankhorage/devtools/prettier';
+import localConfig from './prettier.local.config.js';
 
-const require = createRequire(import.meta.url);
-
-export default require('@ankhorage/devtools/prettier');
+export default {
+  ...sharedConfig,
+  ...localConfig,
+  overrides: [...(sharedConfig.overrides ?? []), ...(localConfig.overrides ?? [])],
+};

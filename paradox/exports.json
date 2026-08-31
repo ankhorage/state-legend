@@ -8,7 +8,7 @@
     "modulePath": "src/index.ts",
     "sourceLocation": {
       "filePath": "src/index.ts",
-      "line": 32,
+      "line": 39,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
