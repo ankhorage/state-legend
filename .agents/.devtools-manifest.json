@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDevtoolsVersion": "1.9.2",
+  "sourceDevtoolsVersion": "1.10.7",
   "skills": {
     "ankhorage-coding-rules": {
       "files": {
@@ -16,7 +16,7 @@
         ".agents/skills/ankhorage-project-structure/references/hexagonal-architecture.md": "sha256:6ee2ed6d33445737bd2616e675e5ce77bf62a67326abaf0f827c8b29edfd4010",
         ".agents/skills/ankhorage-project-structure/references/migration.md": "sha256:abea79e3d2f5a0ee16f695ecc8432d47587e13e0f70cc7bd77788a5c50d9dba2",
         ".agents/skills/ankhorage-project-structure/references/repository-profiles.md": "sha256:ea57b4fdd36260b3106309a03f003cd52865c6d29da960c55c4b2c20b766e4ec",
-        ".agents/skills/ankhorage-project-structure/references/skill-distribution.md": "sha256:62e2d1a9deab16021af1489b10c8c2e2748dda43c209267277919771739c8ed4",
+        ".agents/skills/ankhorage-project-structure/references/skill-distribution.md": "sha256:44c03ecc9157234f540f0ae8a9cc6ad84d1efad25ab83b1776129d8f11d713b9",
         ".agents/skills/ankhorage-project-structure/references/studio.md": "sha256:c11ba39befbec7e0829ccec92aa3a1a27755d2b8d02a832ac98fb5e2fd417f63",
         ".agents/skills/ankhorage-project-structure/references/ui-libraries.md": "sha256:c8e991dc42b40e66f5d02b4beb5b301ec2786d84c8aae74c6d391a70693e9a47",
         ".agents/skills/ankhorage-project-structure/references/utilities.md": "sha256:9641407a941fdfcdcc862760de828a07fccb8b25cca2fcd5c8a0f474fb0f142b",
