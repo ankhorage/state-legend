@@ -57,8 +57,24 @@ jobs:
           publish: bun run changeset -- publish
           commit: Version Packages
           title: Version Packages
+          createGithubReleases: false
         env:
           GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Finalize Changesets v3 tags and GitHub releases
+        if: hashFiles('.changeset/config.json') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git tag --points-at HEAD | while IFS= read -r tag; do
+            if [ -z "$tag" ]; then
+              continue
+            fi
+            git push origin "refs/tags/$tag"
+            if ! gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+              gh release create "$tag" --repo "$GITHUB_REPOSITORY" --generate-notes
+            fi
+          done
 
       - name: Skip release
         if: hashFiles('.changeset/config.json') == ''
