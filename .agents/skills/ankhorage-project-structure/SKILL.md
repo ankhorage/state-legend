@@ -14,7 +14,7 @@ Apply a repository profile instead of forcing one folder tree onto every package
 Before deciding structure:
 
 1. Read the repository `AGENTS.md`, `package.json`, exports, source tree, and representative tests.
-2. Load `ankhorage-coding-rules` and `ankhorage-package-structure` when available.
+2. Load `ankhorage-coding-rules` as the complementary implementation and testing authority.
 3. Identify the repository's owning capability and its profile below.
 4. Identify current public subpaths and cross-package release boundaries.
 
