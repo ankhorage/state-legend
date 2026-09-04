@@ -17,7 +17,7 @@ jobs:
       github.actor == 'renovate[bot]' &&
       github.event.pull_request.head.repo.full_name == github.repository &&
       startsWith(github.event.pull_request.head.ref, 'renovate/')
-    uses: ankhorage/renovate/.github/workflows/changeset.yml@32009974c72d292847a1990ba38cbdf93a564646
+    uses: ankhorage/renovate/.github/workflows/changeset.yml@75156184d918ebeea662a6e89bba0a28a055fa0c
     with:
       renovate_sync_client_id: ${{ vars.ANKHORAGE_RENOVATE_SYNC_CLIENT_ID }}
     secrets:
