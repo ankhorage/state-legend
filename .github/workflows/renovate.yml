@@ -6,10 +6,18 @@ on:
       - opened
       - reopened
       - synchronize
+      - labeled
+
+concurrency:
+  group: renovate-${{ github.repository }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 permissions:
+  checks: read
   contents: read
+  issues: read
   pull-requests: read
+  statuses: read
 
 jobs:
   changeset:
