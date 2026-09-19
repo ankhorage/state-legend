@@ -7,37 +7,16 @@
     <style>
       :root {
         color-scheme: light;
-        font-family:
-          Inter,
-          ui-sans-serif,
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          'Segoe UI',
-          sans-serif;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         background: #f5f7fb;
         color: #11203b;
       }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-      }
-      a {
-        color: #2459d3;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      button {
-        font: inherit;
-      }
-      code,
-      pre {
-        font-family: 'SFMono-Regular', ui-monospace, SFMono-Regular, Menlo, monospace;
-      }
+      * { box-sizing: border-box; }
+      body { margin: 0; }
+      a { color: #2459d3; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      button { font: inherit; }
+      code, pre { font-family: "SFMono-Regular", ui-monospace, SFMono-Regular, Menlo, monospace; }
       .layout {
         display: grid;
         grid-template-columns: minmax(16rem, 22rem) minmax(0, 1fr);
@@ -52,11 +31,8 @@
         max-height: 100vh;
         overflow: auto;
       }
-      .content {
-        padding: 2rem;
-      }
-      .panel,
-      .item {
+      .content { padding: 2rem; }
+      .panel, .item {
         background: #ffffff;
         border: 1px solid #d8dfec;
         border-radius: 0.9rem;
@@ -80,15 +56,12 @@
         border: 1px solid #c7d2e5;
         margin: 1rem 0 1.5rem;
       }
-      .nav-list,
-      .meta-list {
+      .nav-list, .meta-list {
         list-style: none;
         padding: 0;
         margin: 0;
       }
-      .nav-list li + li {
-        margin-top: 0.5rem;
-      }
+      .nav-list li + li { margin-top: 0.5rem; }
       .nav-button {
         width: 100%;
         display: block;
@@ -100,8 +73,7 @@
         padding: 0.55rem 0.7rem;
         text-align: left;
       }
-      .nav-button:hover,
-      .nav-button[aria-current='page'] {
+      .nav-button:hover, .nav-button[aria-current="page"] {
         background: #e8eefb;
         text-decoration: none;
       }
@@ -110,19 +82,9 @@
         color: #5e6d8c;
         margin-top: 0.15rem;
       }
-      .view[hidden] {
-        display: none;
-      }
-      .muted {
-        color: #5e6d8c;
-      }
-      .chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        padding: 0;
-        list-style: none;
-      }
+      .view[hidden] { display: none; }
+      .muted { color: #5e6d8c; }
+      .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; list-style: none; }
       .chip {
         border-radius: 999px;
         background: #e8eefb;
@@ -130,18 +92,8 @@
         padding: 0.25rem 0.65rem;
         font-size: 0.85rem;
       }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 0.8rem;
-      }
-      th,
-      td {
-        padding: 0.6rem;
-        border-bottom: 1px solid #e2e7f2;
-        text-align: left;
-        vertical-align: top;
-      }
+      table { width: 100%; border-collapse: collapse; margin-top: 0.8rem; }
+      th, td { padding: 0.6rem; border-bottom: 1px solid #e2e7f2; text-align: left; vertical-align: top; }
       pre {
         overflow: auto;
         border-radius: 0.75rem;
@@ -149,34 +101,13 @@
         color: #e7edf7;
         padding: 1rem;
       }
-      .empty {
-        font-style: italic;
-        color: #6f7f9c;
-      }
-      .mermaid {
-        margin: 1rem 0;
-        overflow: auto;
-      }
-      details > summary {
-        cursor: pointer;
-        color: #5e6d8c;
-        font-size: 0.9rem;
-        margin-top: 0.5rem;
-        user-select: none;
-      }
+      .empty { font-style: italic; color: #6f7f9c; }
+      .mermaid { margin: 1rem 0; overflow: auto; }
+      details > summary { cursor: pointer; color: #5e6d8c; font-size: 0.9rem; margin-top: 0.5rem; user-select: none; }
       @media (max-width: 900px) {
-        .layout {
-          grid-template-columns: 1fr;
-        }
-        .sidebar {
-          position: static;
-          max-height: none;
-          border-right: 0;
-          border-bottom: 1px solid #d8dfec;
-        }
-        .content {
-          padding: 1rem;
-        }
+        .layout { grid-template-columns: 1fr; }
+        .sidebar { position: static; max-height: none; border-right: 0; border-bottom: 1px solid #d8dfec; }
+        .content { padding: 1rem; }
       }
     </style>
   </head>
@@ -196,181 +127,140 @@
               </button>
             </li>
             <li>
-              <button class="nav-button" type="button" data-target="src/index.ts">
-                src/index.ts
-                <small>18 functions</small>
-              </button>
-            </li>
+    <button class="nav-button" type="button" data-target="src/index.ts">
+      src/index.ts
+      <small>18 functions</small>
+    </button>
+  </li>
           </ul>
         </nav>
       </aside>
       <main class="content">
         <section id="view-home" class="view" data-view="home">
-          <section class="panel">
-            <h2>Package overview</h2>
-            <div class="summary">
-              <div><strong>2</strong><span class="muted">public exports</span></div>
-              <div><strong>0</strong><span class="muted">components</span></div>
-              <div><strong>1</strong><span class="muted">modules</span></div>
-              <div><strong>1</strong><span class="muted">entrypoints</span></div>
-            </div>
-            <h3>Entrypoints</h3>
-            <ul class="meta-list">
-              <li><code>src/index.ts</code></li>
-            </ul>
-          </section>
-
-          <section class="panel">
-            <h2>Modules</h2>
-            <article
-              class="item"
-              data-search="src/index.ts createLegendStateAdapter LegendStateAdapterOptions"
-            >
-              <h3>src/index.ts</h3>
-              <p class="muted">Configured entrypoint</p>
-              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
-              <p>
-                <strong>Exports:</strong> <code>createLegendStateAdapter</code>,
-                <code>LegendStateAdapterOptions</code>
-              </p>
-            </article>
-          </section>
-          <section class="panel">
-            <h2>Public API</h2>
-
+          
+    <section class="panel">
+      <h2>Package overview</h2>
+      <div class="summary">
+        <div><strong>2</strong><span class="muted">public exports</span></div>
+        <div><strong>0</strong><span class="muted">components</span></div>
+        <div><strong>1</strong><span class="muted">modules</span></div>
+        <div><strong>1</strong><span class="muted">entrypoints</span></div>
+      </div>
+      <h3>Entrypoints</h3>
+      <ul class="meta-list">
+        <li><code>src/index.ts</code></li>
+      </ul>
+    </section>
+    
+    <section class="panel">
+      <h2>Modules</h2>
+      <article class="item" data-search="src/index.ts createLegendStateAdapter LegendStateAdapterOptions">
+    <h3>src/index.ts</h3>
+    <p class="muted">Configured entrypoint</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>createLegendStateAdapter</code>, <code>LegendStateAdapterOptions</code></p>
+  </article>
+    </section>
+    <section class="panel">
+      <h2>Public API</h2>
+      
             <section>
               <h3>src/index.ts</h3>
-              <article
-                class="item"
-                id="symbol-createlegendstateadapter"
-                data-search="createLegendStateAdapter function src/index.ts  LegendStateAdapterOptions (options?: LegendStateAdapterOptions) =&gt; StateAdapter"
-              >
-                <h4>createLegendStateAdapter</h4>
-                <p class="muted">function • <code>src/index.ts:39:1</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div>
-                  <strong>Related symbols:</strong>
-                  <ul class="chips">
-                    <li class="chip">LegendStateAdapterOptions</li>
-                  </ul>
-                </div>
-                <div>
-                  <h5>Signature</h5>
-                  <pre>(options?: LegendStateAdapterOptions) =&gt; StateAdapter</pre>
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Parameter</th>
-                        <th>Type</th>
-                        <th>Required</th>
-                        <th>Description</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
+              <article class="item" id="symbol-createlegendstateadapter" data-search="createLegendStateAdapter function src/index.ts  LegendStateAdapterOptions (options?: LegendStateAdapterOptions) =&gt; StateAdapter">
+    <h4>createLegendStateAdapter</h4>
+    <p class="muted">function • <code>src/index.ts:39:1</code></p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <ul class="chips"><li class="chip">LegendStateAdapterOptions</li></ul></div>
+    <div>
+        <h5>Signature</h5>
+        <pre>(options?: LegendStateAdapterOptions) =&gt; StateAdapter</pre>
+        <table>
+                <thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+                <tbody>
+                  <tr>
                         <td><code>options</code></td>
                         <td><code>LegendStateAdapterOptions</code></td>
                         <td>no</td>
                         <td></td>
                       </tr>
-                    </tbody>
-                  </table>
-                  <p><strong>Returns:</strong> <code>StateAdapter</code></p>
-                </div>
-              </article>
-              <article
-                class="item"
-                id="symbol-legendstateadapteroptions"
-                data-search="LegendStateAdapterOptions type src/index.ts "
-              >
-                <h4>LegendStateAdapterOptions</h4>
-                <p class="muted">type • <code>src/index.ts:12:1</code></p>
-
-                <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
-                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
-
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Member</th>
-                      <th>Kind</th>
-                      <th>Type</th>
-                      <th>Required</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><code>initialState</code></td>
-                      <td>property</td>
-                      <td><code>Record&lt;string, StateValue&gt; | undefined</code></td>
-                      <td>no</td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </article>
+                </tbody>
+              </table>
+        <p><strong>Returns:</strong> <code>StateAdapter</code></p>
+      </div>
+    
+  </article><article class="item" id="symbol-legendstateadapteroptions" data-search="LegendStateAdapterOptions type src/index.ts ">
+    <h4>LegendStateAdapterOptions</h4>
+    <p class="muted">type • <code>src/index.ts:12:1</code></p>
+    
+    <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
+    <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+    
+    <table>
+    <thead><tr><th>Member</th><th>Kind</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr>
+            <td><code>initialState</code></td>
+            <td>property</td>
+            <td><code>Record&lt;string, import(&quot;@ankhorage/contracts/dist/serializable&quot;).SerializableValue&gt; | undefined</code></td>
+            <td>no</td>
+            <td></td>
+          </tr>
+    </tbody>
+  </table>
+  </article>
             </section>
-          </section>
-          <section class="panel">
-            <h2>Component registry</h2>
-            <p class="empty">No components were detected.</p>
-          </section>
-          <section class="panel">
-            <h2>Diagrams</h2>
-            <article
-              class="item"
-              data-search="Architecture overview diagrams/architecture-overview.mmd"
-            >
-              <h3>Architecture overview</h3>
-              <p class="muted"><code>diagrams/architecture-overview.mmd</code></p>
-              <div class="mermaid">
-                graph TD package__ankhorage_state_legend[&quot;@ankhorage/state-legend&quot;]
-                entrypoint_src_index_ts[&quot;src/index.ts&quot;] package__ankhorage_state_legend
-                --&gt; entrypoint_src_index_ts module_src_index_ts[&quot;src/index.ts&quot;]
-              </div>
-              <details>
-                <summary>View Mermaid source</summary>
-                <pre>
-graph TD
+    </section>
+    <section class="panel">
+      <h2>Component registry</h2>
+      <p class="empty">No components were detected.</p>
+    </section>
+    <section class="panel">
+      <h2>Diagrams</h2>
+      <article class="item" data-search="Architecture overview diagrams/architecture-overview.mmd">
+    <h3>Architecture overview</h3>
+    <p class="muted"><code>diagrams/architecture-overview.mmd</code></p>
+    <div class="mermaid">graph TD
+  package__ankhorage_state_legend[&quot;@ankhorage/state-legend&quot;]
+  entrypoint_src_index_ts[&quot;src/index.ts&quot;]
+  package__ankhorage_state_legend --&gt; entrypoint_src_index_ts
+  module_src_index_ts[&quot;src/index.ts&quot;]
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>graph TD
   package__ankhorage_state_legend[&quot;@ankhorage/state-legend&quot;]
   entrypoint_src_index_ts[&quot;src/index.ts&quot;]
   package__ankhorage_state_legend --&gt; entrypoint_src_index_ts
   module_src_index_ts[&quot;src/index.ts&quot;]
 </pre>
-              </details>
-            </article>
-            <article
-              class="item"
-              data-search="Module relationships diagrams/module-relationships.mmd"
-            >
-              <h3>Module relationships</h3>
-              <p class="muted"><code>diagrams/module-relationships.mmd</code></p>
-              <div class="mermaid">graph LR module_src_index_ts[&quot;src/index.ts&quot;]</div>
-              <details>
-                <summary>View Mermaid source</summary>
-                <pre>
-graph LR
+    </details>
+  </article><article class="item" data-search="Module relationships diagrams/module-relationships.mmd">
+    <h3>Module relationships</h3>
+    <p class="muted"><code>diagrams/module-relationships.mmd</code></p>
+    <div class="mermaid">graph LR
+  module_src_index_ts[&quot;src/index.ts&quot;]
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>graph LR
   module_src_index_ts[&quot;src/index.ts&quot;]
 </pre>
-              </details>
-            </article>
-            <article class="item" data-search="Export graph diagrams/export-graph.mmd">
-              <h3>Export graph</h3>
-              <p class="muted"><code>diagrams/export-graph.mmd</code></p>
-              <div class="mermaid">
-                graph LR module_src_index_ts[&quot;src/index.ts&quot;]
-                export_createLegendStateAdapter[&quot;createLegendStateAdapter&quot;]
-                module_src_index_ts --&gt; export_createLegendStateAdapter
-                export_createLegendStateAdapter -.-&gt; export_LegendStateAdapterOptions
-                export_LegendStateAdapterOptions[&quot;LegendStateAdapterOptions&quot;]
-                module_src_index_ts --&gt; export_LegendStateAdapterOptions
-              </div>
-              <details>
-                <summary>View Mermaid source</summary>
-                <pre>
-graph LR
+    </details>
+  </article><article class="item" data-search="Export graph diagrams/export-graph.mmd">
+    <h3>Export graph</h3>
+    <p class="muted"><code>diagrams/export-graph.mmd</code></p>
+    <div class="mermaid">graph LR
+  module_src_index_ts[&quot;src/index.ts&quot;]
+  export_createLegendStateAdapter[&quot;createLegendStateAdapter&quot;]
+  module_src_index_ts --&gt; export_createLegendStateAdapter
+  export_createLegendStateAdapter -.-&gt; export_LegendStateAdapterOptions
+  export_LegendStateAdapterOptions[&quot;LegendStateAdapterOptions&quot;]
+  module_src_index_ts --&gt; export_LegendStateAdapterOptions
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>graph LR
   module_src_index_ts[&quot;src/index.ts&quot;]
   export_createLegendStateAdapter[&quot;createLegendStateAdapter&quot;]
   module_src_index_ts --&gt; export_createLegendStateAdapter
@@ -378,46 +268,34 @@ graph LR
   export_LegendStateAdapterOptions[&quot;LegendStateAdapterOptions&quot;]
   module_src_index_ts --&gt; export_LegendStateAdapterOptions
 </pre>
-              </details>
-            </article>
-            <article
-              class="item"
-              data-search="createLegendStateAdapter sequence diagrams/sequences/create-legend-state-adapter.mmd"
-            >
-              <h3>createLegendStateAdapter sequence</h3>
-              <p class="muted"><code>diagrams/sequences/create-legend-state-adapter.mmd</code></p>
-              <div class="mermaid">
-                sequenceDiagram participant participant_createDeleteOperation as
-                createDeleteOperation participant participant_createGetOperation as
-                createGetOperation participant participant_createLegendStateAdapter as
-                createLegendStateAdapter participant participant_createLegendStateContext as
-                createLegendStateContext participant participant_createSetOperation as
-                createSetOperation participant participant_createSubscribeOperation as
-                createSubscribeOperation participant participant_observable as observable
-                participant_createLegendStateAdapter-&gt;&gt;participant_createLegendStateContext:
-                createLegendStateContext()
-                participant_createLegendStateContext-&gt;&gt;participant_observable: observable()
-                participant_observable--&gt;&gt;participant_createLegendStateContext: return
-                participant_createLegendStateContext--&gt;&gt;participant_createLegendStateAdapter:
-                return participant_createLegendStateAdapter-&gt;&gt;participant_createGetOperation:
-                createGetOperation()
-                participant_createGetOperation--&gt;&gt;participant_createLegendStateAdapter: return
-                participant_createLegendStateAdapter-&gt;&gt;participant_createSetOperation:
-                createSetOperation()
-                participant_createSetOperation--&gt;&gt;participant_createLegendStateAdapter: return
-                participant_createLegendStateAdapter-&gt;&gt;participant_createSubscribeOperation:
-                createSubscribeOperation()
-                participant_createSubscribeOperation--&gt;&gt;participant_createLegendStateAdapter:
-                return
-                participant_createLegendStateAdapter-&gt;&gt;participant_createDeleteOperation:
-                createDeleteOperation()
-                participant_createDeleteOperation--&gt;&gt;participant_createLegendStateAdapter:
-                return
-              </div>
-              <details>
-                <summary>View Mermaid source</summary>
-                <pre>
-sequenceDiagram
+    </details>
+  </article><article class="item" data-search="createLegendStateAdapter sequence diagrams/sequences/create-legend-state-adapter.mmd">
+    <h3>createLegendStateAdapter sequence</h3>
+    <p class="muted"><code>diagrams/sequences/create-legend-state-adapter.mmd</code></p>
+    <div class="mermaid">sequenceDiagram
+  participant participant_createDeleteOperation as createDeleteOperation
+  participant participant_createGetOperation as createGetOperation
+  participant participant_createLegendStateAdapter as createLegendStateAdapter
+  participant participant_createLegendStateContext as createLegendStateContext
+  participant participant_createSetOperation as createSetOperation
+  participant participant_createSubscribeOperation as createSubscribeOperation
+  participant participant_observable as observable
+  participant_createLegendStateAdapter-&gt;&gt;participant_createLegendStateContext: createLegendStateContext()
+  participant_createLegendStateContext-&gt;&gt;participant_observable: observable()
+  participant_observable--&gt;&gt;participant_createLegendStateContext: return
+  participant_createLegendStateContext--&gt;&gt;participant_createLegendStateAdapter: return
+  participant_createLegendStateAdapter-&gt;&gt;participant_createGetOperation: createGetOperation()
+  participant_createGetOperation--&gt;&gt;participant_createLegendStateAdapter: return
+  participant_createLegendStateAdapter-&gt;&gt;participant_createSetOperation: createSetOperation()
+  participant_createSetOperation--&gt;&gt;participant_createLegendStateAdapter: return
+  participant_createLegendStateAdapter-&gt;&gt;participant_createSubscribeOperation: createSubscribeOperation()
+  participant_createSubscribeOperation--&gt;&gt;participant_createLegendStateAdapter: return
+  participant_createLegendStateAdapter-&gt;&gt;participant_createDeleteOperation: createDeleteOperation()
+  participant_createDeleteOperation--&gt;&gt;participant_createLegendStateAdapter: return
+</div>
+    <details>
+      <summary>View Mermaid source</summary>
+      <pre>sequenceDiagram
   participant participant_createDeleteOperation as createDeleteOperation
   participant participant_createGetOperation as createGetOperation
   participant participant_createLegendStateAdapter as createLegendStateAdapter
@@ -438,105 +316,88 @@ sequenceDiagram
   participant_createLegendStateAdapter-&gt;&gt;participant_createDeleteOperation: createDeleteOperation()
   participant_createDeleteOperation--&gt;&gt;participant_createLegendStateAdapter: return
 </pre>
-              </details>
-            </article>
-          </section>
+    </details>
+  </article>
+    </section>
         </section>
         <section id="view-src-index-ts" class="view" data-view="src/index.ts" hidden>
-          <section class="panel">
-            <h2>src/index.ts</h2>
-            <article class="item" data-search="createLegendStateAdapter src/index.ts ">
-              <h3>createLegendStateAdapter</h3>
-              <p class="muted"><code>src/index.ts:39:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="createLegendStateContext src/index.ts ">
-              <h3>createLegendStateContext</h3>
-              <p class="muted"><code>src/index.ts:54:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="readRootState src/index.ts ">
-              <h3>readRootState</h3>
-              <p class="muted"><code>src/index.ts:57:9</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="writeRootState src/index.ts ">
-              <h3>writeRootState</h3>
-              <p class="muted"><code>src/index.ts:61:9</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="emit src/index.ts ">
-              <h3>emit</h3>
-              <p class="muted"><code>src/index.ts:64:9</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="createGetOperation src/index.ts ">
-              <h3>createGetOperation</h3>
-              <p class="muted"><code>src/index.ts:78:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="createSetOperation src/index.ts ">
-              <h3>createSetOperation</h3>
-              <p class="muted"><code>src/index.ts:89:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="createSubscribeOperation src/index.ts ">
-              <h3>createSubscribeOperation</h3>
-              <p class="muted"><code>src/index.ts:104:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="wrappedListener src/index.ts ">
-              <h3>wrappedListener</h3>
-              <p class="muted"><code>src/index.ts:114:11</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="createDeleteOperation src/index.ts ">
-              <h3>createDeleteOperation</h3>
-              <p class="muted"><code>src/index.ts:131:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="normalizePath src/index.ts ">
-              <h3>normalizePath</h3>
-              <p class="muted"><code>src/index.ts:143:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="pathPartsToKey src/index.ts ">
-              <h3>pathPartsToKey</h3>
-              <p class="muted"><code>src/index.ts:157:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="readPath src/index.ts ">
-              <h3>readPath</h3>
-              <p class="muted"><code>src/index.ts:161:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="setPath src/index.ts ">
-              <h3>setPath</h3>
-              <p class="muted"><code>src/index.ts:175:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="deletePath src/index.ts ">
-              <h3>deletePath</h3>
-              <p class="muted"><code>src/index.ts:216:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="isPlainStateRecord src/index.ts ">
-              <h3>isPlainStateRecord</h3>
-              <p class="muted"><code>src/index.ts:253:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="createError src/index.ts ">
-              <h3>createError</h3>
-              <p class="muted"><code>src/index.ts:257:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="createStateDataResult src/index.ts ">
-              <h3>createStateDataResult</h3>
-              <p class="muted"><code>src/index.ts:267:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-          </section>
-        </section>
+    <section class="panel">
+      <h2>src/index.ts</h2>
+      <article class="item" data-search="createLegendStateAdapter src/index.ts ">
+    <h3>createLegendStateAdapter</h3>
+    <p class="muted"><code>src/index.ts:39:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="createLegendStateContext src/index.ts ">
+    <h3>createLegendStateContext</h3>
+    <p class="muted"><code>src/index.ts:54:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="readRootState src/index.ts ">
+    <h3>readRootState</h3>
+    <p class="muted"><code>src/index.ts:57:9</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="writeRootState src/index.ts ">
+    <h3>writeRootState</h3>
+    <p class="muted"><code>src/index.ts:61:9</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="emit src/index.ts ">
+    <h3>emit</h3>
+    <p class="muted"><code>src/index.ts:64:9</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="createGetOperation src/index.ts ">
+    <h3>createGetOperation</h3>
+    <p class="muted"><code>src/index.ts:78:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="createSetOperation src/index.ts ">
+    <h3>createSetOperation</h3>
+    <p class="muted"><code>src/index.ts:89:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="createSubscribeOperation src/index.ts ">
+    <h3>createSubscribeOperation</h3>
+    <p class="muted"><code>src/index.ts:104:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="wrappedListener src/index.ts ">
+    <h3>wrappedListener</h3>
+    <p class="muted"><code>src/index.ts:114:11</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="createDeleteOperation src/index.ts ">
+    <h3>createDeleteOperation</h3>
+    <p class="muted"><code>src/index.ts:131:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="normalizePath src/index.ts ">
+    <h3>normalizePath</h3>
+    <p class="muted"><code>src/index.ts:143:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="pathPartsToKey src/index.ts ">
+    <h3>pathPartsToKey</h3>
+    <p class="muted"><code>src/index.ts:157:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="readPath src/index.ts ">
+    <h3>readPath</h3>
+    <p class="muted"><code>src/index.ts:161:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="setPath src/index.ts ">
+    <h3>setPath</h3>
+    <p class="muted"><code>src/index.ts:175:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="deletePath src/index.ts ">
+    <h3>deletePath</h3>
+    <p class="muted"><code>src/index.ts:216:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="isPlainStateRecord src/index.ts ">
+    <h3>isPlainStateRecord</h3>
+    <p class="muted"><code>src/index.ts:253:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="createError src/index.ts ">
+    <h3>createError</h3>
+    <p class="muted"><code>src/index.ts:257:1</code></p>
+    <p class="empty">No description available.</p>
+  </article><article class="item" data-search="createStateDataResult src/index.ts ">
+    <h3>createStateDataResult</h3>
+    <p class="muted"><code>src/index.ts:267:1</code></p>
+    <p class="empty">No description available.</p>
+  </article>
+    </section>
+  </section>
       </main>
     </div>
     <script>

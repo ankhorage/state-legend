@@ -20,6 +20,6 @@ Source: `src/index.ts:12:1`
 
 ### Members
 
-| Name         | Kind     | Type                                      | Required | Description |
-| ------------ | -------- | ----------------------------------------- | -------- | ----------- |
-| initialState | property | `Record<string, StateValue> \| undefined` | no       |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| initialState | property | `Record<string, import("@ankhorage/contracts/dist/serializable").SerializableValue> \| undefined` | no |  |

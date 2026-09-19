@@ -11,8 +11,12 @@
       "line": 39,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
-    "relatedSymbols": ["LegendStateAdapterOptions"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
+    "relatedSymbols": [
+      "LegendStateAdapterOptions"
+    ],
     "signatures": [
       {
         "label": "(options?: LegendStateAdapterOptions) => StateAdapter",
@@ -43,14 +47,16 @@
       "line": 12,
       "column": 1
     },
-    "exportPaths": ["src/index.ts"],
+    "exportPaths": [
+      "src/index.ts"
+    ],
     "relatedSymbols": [],
     "signatures": [],
     "members": [
       {
         "name": "initialState",
         "kind": "property",
-        "type": "Record<string, StateValue> | undefined",
+        "type": "Record<string, import(\"@ankhorage/contracts/dist/serializable\").SerializableValue> | undefined",
         "required": false,
         "description": null
       }

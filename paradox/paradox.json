@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.1.0",
+      "value": "v0.1.12",
       "color": "cb3837"
     },
     {
@@ -66,13 +66,18 @@
   "readmeCli": null,
   "readmeConfig": null,
   "config": null,
-  "entrypoints": ["src/index.ts"],
+  "entrypoints": [
+    "src/index.ts"
+  ],
   "modules": [
     {
       "path": "src/index.ts",
       "isEntrypoint": true,
       "dependencies": [],
-      "exports": ["createLegendStateAdapter", "LegendStateAdapterOptions"]
+      "exports": [
+        "createLegendStateAdapter",
+        "LegendStateAdapterOptions"
+      ]
     }
   ],
   "exports": [
@@ -88,8 +93,12 @@
         "line": 39,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["LegendStateAdapterOptions"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "LegendStateAdapterOptions"
+      ],
       "signatures": [
         {
           "label": "(options?: LegendStateAdapterOptions) => StateAdapter",
@@ -120,14 +129,16 @@
         "line": 12,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
       "relatedSymbols": [],
       "signatures": [],
       "members": [
         {
           "name": "initialState",
           "kind": "property",
-          "type": "Record<string, StateValue> | undefined",
+          "type": "Record<string, import(\"@ankhorage/contracts/dist/serializable\").SerializableValue> | undefined",
           "required": false,
           "description": null
         }
@@ -495,7 +506,7 @@
       },
       {
         "fromSymbol": "LegendStateAdapterOptions",
-        "toType": "StateValue",
+        "toType": "SerializableValue",
         "sourcePath": "src/index.ts"
       }
     ],
