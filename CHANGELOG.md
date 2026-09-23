@@ -1,5 +1,11 @@
 # @ankhorage/state-legend
 
+## 0.1.18
+
+### Patch Changes
+
+- cc10920: Update Ankhorage dependencies: `@ankhorage/contracts`.
+
 ## 0.1.17
 
 ### Patch Changes
