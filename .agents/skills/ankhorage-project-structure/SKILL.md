@@ -36,71 +36,57 @@ repository root. Do not resolve it relative to this skill's own installation loc
 
 1. `<repo-root>/.agents/skills/hexagonal-architecture/SKILL.md`
 
-## Required source layout
+## Architecture profiles and source layout
 
-- `examples/`: Repository-root folder in this standalone repository;
-  Use it for complete, intentional, user-facing examples that people can inspect, copy, install, and run independently of a monorepo or internal fixture layout.
+Do not impose one folder tree on every repository. Select the smallest profile that matches the
+repository's real responsibility, then enforce that profile's vocabulary and dependency direction.
+Read `references/architecture-profiles.md` and `references/hexagonal-invariants.md` before
+creating or moving architectural directories.
 
-Each example lives in a named subdirectory, such as `examples/basic-usage/*.ts`. Do not put example
-source files directly under `examples/`.
+Valid profiles include:
 
-Test-only fixtures remain owned by the applicable test structure. Do not relabel fixtures as public
-examples merely to bypass repository structure rules.
+- simple/value/contracts library;
+- reusable UI or design-system library;
+- application, engine, or hybrid package;
+- provider or platform adapter package;
+- tooling package;
+- generated standalone application;
+- an explicitly documented repository-specific profile such as Studio.
 
-- `src/cli/` must exist or have a concrete issue tracking the missing CLI commands;
-  CLI modules are thin inbound adapters: they parse input, invoke a feature use case, and render
-  output.
+A package may start flat. Introduce `domain/`, `application/`, `ports/`, `adapters/`,
+`composition/`, `features/`, or `core/` only when those names communicate a real architectural
+role. Once a vocabulary is introduced, its combinations must be coherent:
 
-The filesystem below `src/cli/commands/` mirrors the public command path after the package prefix:
+- `domain/` may stand alone and must remain independent from outer mechanisms;
+- `application/` coordinates use cases and may depend inward on domain policy and required ports;
+- `ports/` define capabilities required by inner policy; they do not implement provider technology;
+- `adapters/` translate or implement a port at an external edge and therefore require an inward
+  capability boundary to adapt to;
+- `composition/` is outer wiring and exists only when concrete implementations need selection;
+- `features/` is feature-first organization, not a generic bucket. Each feature owns a coherent
+  slice and may introduce only the role directories it actually needs;
+- `core/` is allowed only when the repository defines it narrowly as stable inner policy. It must
+  never become a miscellaneous dumping ground.
 
-```text
-ankh <package> <segment> ... <command>
-  -> src/cli/commands/<segment>/.../<command>.ts
-```
+Dependency direction is the invariant. Inner policy must not import outer mechanisms. A domain or
+core module must not depend on application orchestration, adapters, composition, CLI, host,
+platform, framework, database, or provider implementation details. Application/use-case code must
+not import concrete adapters or composition roots. Adapters may depend inward on ports/application/
+domain contracts. Composition may depend on all pieces it wires.
 
-The package prefix is represented by the provider and is not repeated under `commands/`. Flags and
-positional arguments do not affect this directory tree. Each command file follows the one-export
-rule: `commands/projects/list.ts` exports `list` and owns only the command-specific input/output
-mapping.
+Do not create empty layers for symmetry. A small package with no domain orchestration does not need
+hexagonal ceremony. UI libraries use component/foundation dependency direction rather than fake
+application ports. Contracts libraries remain portable and side-effect free.
 
-- `src/features/`: Lists the repository's actual product capabilities;
-  Technical categories are not features. Each feature owns its own hexagonal structure as needed,
-  following the required Hexagonal Architecture skill. Do not create empty layers.
+Repository-root `examples/` contains complete user-facing examples. Each example lives in a named
+subdirectory. Test-only fixtures remain test-owned.
 
-```text
-examples/
-  <example>/
-src/
-  cli/
-    createCliProvider.ts
-    commands/
-      <command>.ts
-      <group>/
-        <command>.ts
-  features/
-    <feature>/
-      domain/
-      application/
-        ports/
-          inbound/
-          outbound/
-        use-cases/
-      adapters/
-        inbound/
-        outbound/
-      composition/
-      constants/
-        <topic>.ts
-      utils/
-  types/
-    <topic>.ts
-  constants/
-    <topic>.ts
-  utils/
-```
+Package-level delivery edges such as `src/cli/`, `src/host/`, `src/app/`, or `src/platform/`
+remain thin adapters/composition boundaries. The filesystem below `src/cli/commands/` mirrors the
+public Ankh command path, and command modules parse input, invoke package behavior, and render output.
 
-Keep only deliberate package facades directly under `src/`. Public package subpaths must name their
-explicit module in `package.json`; generic `index.ts` barrels are not public API exceptions.
+Keep only deliberate public facades directly under `src/`. Public package subpaths must map to
+explicit package exports; generic barrels are not an excuse to bypass ownership.
 
 ## General Taxonomy
 
