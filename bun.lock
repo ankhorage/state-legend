@@ -10,7 +10,7 @@
       },
       "devDependencies": {
         "@ankhorage/devtools": "^1.20.0",
-        "@ankhorage/paradox": "^0.2.1",
+        "@ankhorage/paradox": "^0.2.2",
         "@types/bun": "^1.4.1",
         "@types/node": "^25.6.0",
         "typescript": "^5.9.3",
@@ -26,7 +26,7 @@
 
     "@ankhorage/devtools": ["@ankhorage/devtools@1.20.0", "", { "dependencies": { "@ankhorage/apm": "^0.8.10", "@ankhorage/contracts": "^22.8.1", "@ankhorage/project-detector": "^0.3.1", "@ankhorage/utility": "^0.5.5", "@changesets/cli": "^3.0.3", "@eslint/compat": "^2.1.1", "@eslint/js": "^10.0.1", "@next/eslint-plugin-next": "^16.3.6", "eslint": "^10.11.0", "eslint-config-prettier": "^10.1.8", "eslint-plugin-import": "^2.32.0", "eslint-plugin-prettier": "^5.5.6", "eslint-plugin-react": "^7.37.5", "eslint-plugin-react-hooks": "^7.1.1", "eslint-plugin-react-native": "^5.0.0", "eslint-plugin-security": "^4.0.1", "eslint-plugin-simple-import-sort": "^14.0.0", "eslint-plugin-unused-imports": "^4.4.1", "knip": "^6.38.0", "prettier": "^3.9.9", "typescript": "~6.0.3", "typescript-eslint": "^8.70.1" }, "bin": { "ankhorage-knip": "dist/cli/bin/knip.js", "ankhorage-eslint": "dist/cli/bin/eslint.js", "ankhorage-prettier": "dist/cli/bin/prettier.js", "ankhorage-changeset": "dist/cli/bin/changeset.js", "ankhorage-structure": "dist/cli/bin/structure.js", "ankhorage-apm-release": "dist/cli/bin/apm-release.js" } }, "sha512-91bT4u+UyRh7DS8Az0dpYgK2yDC1HR3UJn262dA+pJAxLedSmXMqhRQkT8hFYpjJhWZoEAL7CUVJQEGD8VmTdA=="],
 
-    "@ankhorage/paradox": ["@ankhorage/paradox@0.2.1", "", { "dependencies": { "@ankhorage/policy": "^0.2.0", "@ankhorage/utility": "^1.8.0", "ts-morph": "^28.0.0" }, "bin": { "paradox": "dist/cli/standalone.js" } }, "sha512-wGMpNG1N40Saq58OJ1CToRFUIspFuik3OtHYp3R2bn9KQ87y/O91wl067qEqNL26zMNCoQ4lp1iRELRh5zK2Zg=="],
+    "@ankhorage/paradox": ["@ankhorage/paradox@0.2.2", "", { "dependencies": { "@ankhorage/policy": "^0.2.0", "@ankhorage/utility": "^1.8.0", "ts-morph": "^28.0.0" }, "bin": { "paradox": "dist/cli/standalone.js" } }, "sha512-4WpFHyVXNcGP98vQ8RSN2gCaVxAxA2i8ea52OfMr11oarwZt1NFc+tfO24mD2a4Zvukr27z2FoAPOZUe9cxh5w=="],
 
     "@ankhorage/policy": ["@ankhorage/policy@0.2.1", "", {}, "sha512-aldRoWZEacD+NjiKhYeFCbDbd3XKe95Ajd06eQbDG+zdPLbajyN3yPn6CVF/gAFziXyA93XLAy4KLAGxLp0sPQ=="],
 
