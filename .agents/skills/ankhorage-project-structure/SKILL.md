@@ -163,7 +163,13 @@ belong together in `ankhorage/navigator/src/constants/navigator.ts`.
 `utils/` is the only utility directory name. Do not create `shared/`, `helper/`, `helpers/`,
 `common/`, or equivalent catch-all folders. It is not a destination for every pure function or type.
 
-Apply **reuse before implementation** and **shared by default** before choosing a local owner. For
+Apply **reuse before implementation** and **shared by default** before choosing a local owner.
+
+Treat the **second equivalent generic implementation as the duplication threshold**. When the same
+general-purpose regex, parser pattern, formatter, validator, algorithm, or static policy appears in
+two places, stop copying it and resolve its canonical shared owner. For runtime-neutral reusable
+behavior or patterns, inspect and extend `@ankhorage/utility` first. Do not wait for a third copy,
+and do not create repo-local aliases around the shared implementation. For
 every function that could reasonably be reused across repositories, you MUST first inspect the
 published `@ankhorage/utility` public API and its owning topic. Reuse the existing export when its
 semantics match. If the function is missing and is generic without product, manifest, or framework
