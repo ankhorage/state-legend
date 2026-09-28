@@ -9,7 +9,7 @@
         "@legendapp/state": "beta",
       },
       "devDependencies": {
-        "@ankhorage/devtools": "^2.0.6",
+        "@ankhorage/devtools": "^2.0.7",
         "@ankhorage/paradox": "^0.2.6",
         "@types/bun": "^1.4.2",
         "@types/node": "^26.6.3",
