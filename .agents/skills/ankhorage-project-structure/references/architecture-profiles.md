@@ -3,25 +3,28 @@
 Choose the profile from actual ownership and consumers. Profiles define allowed vocabulary and
 dependency direction; they are not templates that require every listed directory.
 
-## Simple, value, or contracts library
+## Simple or value library
 
-Use for portable types, deterministic values, parsers, constants, algorithms, and small libraries
-without application orchestration.
+Use for deterministic values, parsers, constants, algorithms, and small runtime libraries without
+application orchestration. Runtime-owning libraries are still feature-first: each coherent package
+capability belongs below `src/features/<feature>/`, but a simple feature does not need hexagonal
+role directories when it has no orchestration or external edge.
 
-Typical forms:
+Typical form:
 
 ```text
 src/
   index.ts
-  <domain-or-topic>/
+  features/
+    <feature>/
   types/
   constants/
   utils/
 ```
 
 Do not invent ports, adapters, application, or composition layers when there is no external edge to
-abstract. Contracts packages additionally keep public declarations serializable and free of runtime
-implementation.
+abstract. Contracts-only repositories follow the dedicated Contracts repository profile from the
+main project-structure skill instead of this runtime-library profile.
 
 ## Reusable UI or design-system library
 
@@ -44,28 +47,13 @@ components or registries. Provider execution belongs outside reusable presentati
 ## Application, engine, or hybrid package
 
 Use when the package owns use cases, state transitions, external systems, or several delivery edges.
-Domain-first and feature-first organization are both valid when coherent.
-
-Domain-first example:
-
-```text
-src/
-  <domain>/
-    domain/
-    application/
-    ports/
-    adapters/
-    composition/
-  cli/
-  host/
-  app/
-  platform/
-```
-
-Feature-first example:
+These packages are feature-first: every product/domain/package capability is owned below
+`src/features/<feature>/`. Do not use top-level domain folders or flat `src/*.ts` implementation
+modules as an alternative ownership model.
 
 ```text
 src/
+  index.ts
   features/
     <feature>/
       domain/
@@ -74,6 +62,10 @@ src/
       adapters/
       composition/
   cli/
+    commands/
+  types/
+  constants/
+  utils/
 ```
 
 Only create the role directories that the capability actually needs. A pure domain feature can stop
@@ -81,35 +73,45 @@ at `domain/`; an in-memory use case need not invent an outbound adapter.
 
 ## Provider or platform adapter package
 
-Use when the package deliberately implements an external technology boundary:
+Use when the package deliberately implements an external technology boundary. Provider capabilities
+are still feature-owned; concrete technology remains at the feature's outer adapter boundary:
 
 ```text
 src/
-  contracts/
-  planning/
-  adapters/
-  composition/
+  features/
+    <capability>/
+      domain/
+      application/
+      ports/
+      adapters/
+      composition/
   cli/
+    commands/
 ```
 
 Portable configuration and planning stay independent from SDK/runtime values. Concrete provider code
-stays in adapters.
+stays in adapters, and package-level delivery edges remain outside the feature.
 
 ## Tooling package
 
-Command-centric tooling may use:
+Command-centric tooling remains feature-first for owned capabilities while the CLI stays an outer
+delivery edge:
 
 ```text
 src/
+  features/
+    <capability>/
+      domain/
+      application/
+      ports/
+      adapters/
+      composition/
   cli/
-  policy/
-  application/
-  adapters/
-  composition/
+    commands/
 ```
 
 Policy remains deterministic. Filesystem, process, registry, network, and GitHub behavior stay at
-the edge.
+the feature edge or package delivery edge rather than leaking into inner policy.
 
 ## Generated standalone application
 
