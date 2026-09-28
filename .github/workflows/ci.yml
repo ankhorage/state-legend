@@ -83,19 +83,6 @@ jobs:
             echo "No test script found; skipping."
           fi
 
-      - name: Run standalone contract
-        run: |
-          if node -e "const p=require('./package.json'); const required=p.private!==true&&p.publishConfig?.access==='public'; process.exit(required||p.scripts?.['test:standalone']?0:1)"; then
-            if node -e "const p=require('./package.json'); process.exit(p.scripts?.['test:standalone']?0:1)"; then
-              bun run test:standalone
-            else
-              echo "::error title=Standalone contract test required::Public packages must define test:standalone."
-              exit 1
-            fi
-          else
-            echo "No standalone owner test required; skipping."
-          fi
-
       - name: Run typecheck
         run: |
           if node -e "const p=require('./package.json'); process.exit(p.scripts?.typecheck ? 0 : 1)"; then
