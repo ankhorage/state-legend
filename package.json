@@ -23,7 +23,7 @@
     "typescript"
   ],
   "dependencies": {
-    "@ankhorage/contracts": "^22.8.22",
+    "@ankhorage/contracts": "^22.8.23",
     "@legendapp/state": "beta"
   },
   "files": [
