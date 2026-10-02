@@ -5,7 +5,7 @@
     "": {
       "name": "@ankhorage/state-legend",
       "dependencies": {
-        "@ankhorage/contracts": "^22.8.88",
+        "@ankhorage/contracts": "^22.8.93",
         "@legendapp/state": "beta",
       },
       "devDependencies": {
@@ -22,7 +22,7 @@
 
     "@ankhorage/color-theory": ["@ankhorage/color-theory@0.3.1", "", { "dependencies": { "culori": "^4.0.2" } }, "sha512-PqGeC16IkWzTA3Qig3T1p6CE6oN6JC1fv83cJ8SdohY5vlNE1YqJAZsLkzCy59ylJOwgPITA98TRH3jIVnlGBw=="],
 
-    "@ankhorage/contracts": ["@ankhorage/contracts@22.8.88", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/utility": "^1.9.73" } }, "sha512-SxMLTMLAy7ZDy5+pK+Zv7bDeDZdbZGUqHBNjtBOuoIJ51sMkOgoyo+LUpYG3TKoVUSK6xjO4gcYgps2dj2VZiw=="],
+    "@ankhorage/contracts": ["@ankhorage/contracts@22.8.93", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/utility": "^1.9.77" } }, "sha512-gwes14wRTHiUEtCPW3qF9FotvRDH0esNWVF+u5I8pBZzdicxMMgx7g0R5somNHoK0rShWiG7TGgTwdpIMlrhYQ=="],
 
     "@ankhorage/devtools": ["@ankhorage/devtools@2.0.113", "", { "dependencies": { "@ankhorage/apm": "^0.8.13", "@ankhorage/contracts": "^22.8.89", "@ankhorage/policy": "^0.6.0", "@ankhorage/project-detector": "^0.3.3", "@ankhorage/utility": "^0.5.5", "@changesets/cli": "^3.0.3", "@eslint/compat": "^2.1.1", "@eslint/js": "^10.0.1", "@next/eslint-plugin-next": "^16.3.8", "eslint": "^10.11.0", "eslint-config-prettier": "^10.1.8", "eslint-plugin-import": "^2.32.0", "eslint-plugin-prettier": "^5.5.6", "eslint-plugin-react": "^7.37.5", "eslint-plugin-react-hooks": "^7.1.1", "eslint-plugin-react-native": "^5.0.0", "eslint-plugin-security": "^4.2.0", "eslint-plugin-simple-import-sort": "^14.0.0", "eslint-plugin-unused-imports": "^4.4.1", "knip": "^6.39.0", "prettier": "^3.9.9", "typescript": "~6.0.3", "typescript-eslint": "^8.71.0" }, "bin": { "ankhorage-knip": "dist/cli/bin/knip.js", "ankhorage-eslint": "dist/cli/bin/eslint.js", "ankhorage-prettier": "dist/cli/bin/prettier.js", "ankhorage-changeset": "dist/cli/bin/changeset.js", "ankhorage-structure": "dist/cli/bin/structure.js", "ankhorage-apm-release": "dist/cli/bin/apm-release.js" } }, "sha512-Mv4WzN9AobbV3n4dR6UBoMktGwb9MDtNSIfPiu+x3vN6kwcuCbx/wkVLAujA8OFkoXk9DF3ag+JdnX45EpTWXA=="],
 
@@ -824,7 +824,7 @@
 
     "@ankhorage/apm/@ankhorage/utility": ["@ankhorage/utility@1.9.0", "", { "peerDependencies": { "fastify": "^5.12.5" }, "optionalPeers": ["fastify"] }, "sha512-y5n8qV2hMpiA5Xf+E8b7+8HOXQ7rJF0JXtu9Z37RE8e6p+dxfTnxb68OqPJNz8UPG/wIHAonWl4f5wMvzmIHig=="],
 
-    "@ankhorage/contracts/@ankhorage/utility": ["@ankhorage/utility@1.9.73", "", { "peerDependencies": { "fastify": "^5.12.5" }, "optionalPeers": ["fastify"] }, "sha512-ZSxarNJpRau7iBxgNRjNLwQVbyma1EZ3F1sTtqY9yc5+h8NrI9IVNGZFuuy1fgYXNdKc/YhWWudsBa1S5d+/yg=="],
+    "@ankhorage/contracts/@ankhorage/utility": ["@ankhorage/utility@1.9.77", "", { "peerDependencies": { "fastify": "^5.12.5" }, "optionalPeers": ["fastify"] }, "sha512-EwiQ993y1W4iQGMKUuGIclie1sk7w2TP+LSTbNSooH/oWl1f+jfSE9SDyHdq1PsnII2kWXLvVPDLhzSuQZUYyw=="],
 
     "@ankhorage/devtools/@ankhorage/contracts": ["@ankhorage/contracts@22.8.91", "", { "dependencies": { "@ankhorage/color-theory": "^0.3.1", "@ankhorage/utility": "^1.9.76" } }, "sha512-R37+vjrLBu7haNGN1PApzJfXtA2zywV1fnpiwX/7WSeEQONX+SwM2mH+4yJyBlpQcFUminqHOq3eu6gZDz0isA=="],
 
