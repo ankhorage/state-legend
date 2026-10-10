@@ -5,7 +5,7 @@
     "": {
       "name": "@ankhorage/state-legend",
       "dependencies": {
-        "@ankhorage/contracts": "^25.1.0",
+        "@ankhorage/contracts": "^25.2.0",
         "@legendapp/state": "beta",
       },
       "devDependencies": {
