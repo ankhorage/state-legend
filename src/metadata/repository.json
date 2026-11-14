@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "adapter",
+  "title": "Ankhorage Legend State Adapter",
+  "summary": "Adapts Legend State to Ankhorage state contracts.",
+  "purpose": "Provide a dedicated state implementation boundary so consumers use Ankhorage state contracts rather than Legend State directly.",
+  "domain": "application state",
+  "responsibilities": ["Implement Ankhorage state contracts with Legend State.", "Expose the adapter through the package public entrypoint."],
+  "boundaries": ["Does not define the shared state contracts.", "Does not own application-specific state models or persistence policy."],
+  "audience": ["Applications selecting Legend State as their state implementation."],
+  "useCases": ["Use Legend State through an Ankhorage state adapter."],
+  "architecture": {"role": "Provider adapter at the state-contract boundary.", "invariants": ["Legend State remains isolated behind the package adapter boundary."]},
+  "implements": [{"packageName": "@ankhorage/contracts", "subpath": "./state"}],
+  "constraints": {"limitations": ["Only state behavior represented by the shared contract is portable to consumers."]}
+}
