@@ -88,6 +88,14 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      - name: Install declared Playwright Chromium
+        run: |
+          if node -e "const p=require('./package.json'); const sections=['dependencies','devDependencies','optionalDependencies']; process.exit(sections.some((section) => typeof p[section]?.['playwright-core'] === 'string') ? 0 : 1)"; then
+            bun ./node_modules/.bin/playwright-core install chromium
+          else
+            echo "No Playwright Core dependency declared; skipping Chromium installation."
+          fi
+
       - name: Build package
         run: |
           if node -e "const p=require('./package.json'); process.exit(p.scripts?.build ? 0 : 1)"; then
@@ -221,7 +229,7 @@ jobs:
           if node -e "const p=require('./package.json'); process.exit(p.name === '@ankhorage/doctor' ? 0 : 1)"; then
             bun ./dist/cli/standalone.js validate . --enforce-repository-metadata
           else
-            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.15.6 validate . --enforce-repository-metadata
+            BUN_INSTALL_CACHE_DIR="${RUNNER_TEMP}/doctor-cache" bunx @ankhorage/doctor@0.15.7 validate . --enforce-repository-metadata
           fi
 
       - name: Determine immutable pre-publish release intent
